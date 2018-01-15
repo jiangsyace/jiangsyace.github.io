@@ -4,8 +4,7 @@
         <meta charset="utf-8" />
         <title>Full example - Editor.md examples</title>
         <link rel="stylesheet" href="css/style.css" />
-        <link rel="stylesheet" href="css/editormd.css" />   
-        <link rel="shortcut icon" href="https://pandao.github.io/editor.md/favicon.ico" type="image/x-icon" />
+        <link rel="stylesheet" href="css/editormd.css" />
         <style>            
             /*.editormd-preview-theme-dark {
                 color: #777;
@@ -101,7 +100,7 @@
             
             $(function() {
                 
-                $.get('test.md', function(md){
+                $.get('./test.md', function(md){
                     testEditor = editormd("test-editormd", {
                         width: "100%",
                         height: "100%",
