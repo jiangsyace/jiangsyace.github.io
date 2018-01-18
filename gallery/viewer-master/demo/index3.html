@@ -1,0 +1,1370 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html style="overflow-x:auto;overflow-y:auto;">
+<head>
+	
+	<title></title><!--  - Powered By JeeSite -->
+	<meta http-equiv="Content-Type" content="text/html;charset=utf-8" /><meta name="author" content="http://jeesite.com/"/>
+<meta name="renderer" content="webkit"><meta http-equiv="X-UA-Compatible" content="IE=8,IE=9,IE=10" />
+<meta http-equiv="Expires" content="0"><meta http-equiv="Cache-Control" content="no-cache"><meta http-equiv="Cache-Control" content="no-store">
+<script src="http://192.168.0.44:8088/irsy-web-manager/static/jquery/jquery-1.8.3.min.js" type="text/javascript"></script>
+<link href="/irsy-web-manager/static/bootstrap/2.3.1/css_cerulean/bootstrap.min.css" type="text/css" rel="stylesheet" />
+<script src="/irsy-web-manager/static/bootstrap/2.3.1/js/bootstrap.min.js" type="text/javascript"></script>
+<link href="/irsy-web-manager/static/bootstrap/2.3.1/awesome/font-awesome.css" type="text/css" rel="stylesheet" />
+<!--[if lte IE 7]><link href="/irsy-web-manager/static/bootstrap/2.3.1/awesome/font-awesome-ie7.min.css" type="text/css" rel="stylesheet" /><![endif]-->
+<!--[if lte IE 6]><link href="/irsy-web-manager/static/bootstrap/bsie/css/bootstrap-ie6.min.css" type="text/css" rel="stylesheet" />
+<script src="/irsy-web-manager/static/bootstrap/bsie/js/bootstrap-ie.min.js" type="text/javascript"></script><![endif]-->
+<link href="/irsy-web-manager/static/jquery-select2/3.4/select2.min.css" rel="stylesheet" />
+<script src="/irsy-web-manager/static/jquery-select2/3.4/select2.min.js" type="text/javascript"></script>
+<link href="/irsy-web-manager/static/jquery-validation/1.11.0/jquery.validate.min.css" type="text/css" rel="stylesheet" />
+<script src="/irsy-web-manager/static/jquery-validation/1.11.0/jquery.validate.js" type="text/javascript"></script>
+<link href="/irsy-web-manager/static/jquery-jbox/2.3/Skins2/Blue/jbox.css" rel="stylesheet" />
+<script src="/irsy-web-manager/static/jquery-jbox/2.3/jquery.jBox-2.3.min.js" type="text/javascript"></script>
+<script src="/irsy-web-manager/static/My97DatePicker/WdatePicker.js" type="text/javascript"></script>
+<script src="/irsy-web-manager/static/common/mustache.min.js" type="text/javascript"></script>
+<link href="/irsy-web-manager/static/common/jeesite.css" type="text/css" rel="stylesheet" />
+<script src="/irsy-web-manager/static/common/jeesite.js" type="text/javascript"></script>
+<script type="text/javascript">var ctx = '/irsy-web-manager/a', ctxStatic='/irsy-web-manager/static';</script>		
+	
+
+<meta name="decorator" content="default" />
+<link rel="stylesheet" href="/irsy-web-manager/static/css/touch.css?20160808" />
+<link href="/irsy-web-manager/static/webuploader/webuploader.css" type="text/css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="/irsy-web-manager/static/fancybox/jquery.fancybox-1.3.4.css" media="screen" />
+
+<script type="text/javascript" src="/irsy-web-manager/static/fancybox/jquery.fancybox-1.3.4.js" ></script>
+<script type="text/javascript" src="/irsy-web-manager/static/webuploader/webuploader.nolog.min.js" ></script>
+<script type="text/javascript" src="/irsy-web-manager/static/webuploader/jquery.webuploader.js" ></script>
+<style type="text/css">
+    #div_apply table, #div_file table{width:95%; margin:auto;}
+    #div_apply table tr{}
+    #div_apply table .title{font-size: 25px; line-height: 32px; text-align: center;}
+    #div_apply table .small_title{font-size: 18px; line-height: 25px; }
+    #div_apply table tr td{ border:1px solid #CCC; padding:5px;}
+    #div_apply table tr td:nth-child(1),#div_apply table tr td:nth-child(3){ background-color:#f5f5f5; width:15%;}
+</style>
+
+</head>
+<body>
+	
+    <div style="font-size: 20px; margin: 10px; border-bottom: 1px solid #ccc; padding:10px;">
+        深圳市易事达电子有限公司
+    </div>
+    
+        
+
+    <div class="process_img">
+        <div class="apply_lc" style="margin: 100px 0 50px;">
+            <div class="apply_lc_xt"></div>
+            <ul>
+                
+                
+                    <li class="active"><div class="lc_tbbg"><i class="tbpic01"></i></div><span>申请</span></li>
+                    <li  class="active"><div class="lc_tbbg"><i class="tbpic02"></i></div><span>初审</span></li>
+                    <li><div class="lc_tbbg"><i class="tbpic03"></i></div><span>金融机构审批</span></li>
+                    <li class="dlt_right"><div class="lc_tbbg"><i class="tbpic04"></i></div><span>成功</span></li>
+                
+                
+                
+                
+                
+            </ul>
+        </div>
+        
+    </div>
+    
+    
+
+    
+    
+    
+    
+    <ul class="nav nav-tabs">
+    
+        <!-- 审贷会权限 -->
+        
+        <!-- 审贷会权限 end-->
+    
+        
+        
+            <li id="applyInfo"><a href="/irsy-web-manager/a/process/applyInfo?orderNo=161214652325000698">申请表</a></li>
+        
+        
+            <li id="fileList"><a href="/irsy-web-manager/a/process/fileList?orderNo=161214652325000698">资料清单</a></li>
+        
+        
+        
+        
+        
+        
+            <li id="auditRecord"><a href="/irsy-web-manager/a/process/auditRecord?orderNo=161214652325000698">审批记录</a></li>
+        
+        
+        
+        
+        
+        
+          
+          
+         <li id="accessInfo"><a href="/irsy-web-manager/a/irsyAccessFilter/waitAccess/accessInfo?orderNo=161214652325000698">准入信息</a></li>
+         
+    </ul>
+    
+
+<script type="text/javascript">
+$(document).ready(function() {
+    $("#fileList").addClass("active");
+    
+});
+</script>
+    <link rel="stylesheet" type="text/css" href="http://127.0.0.1/viewer-master/dist/viewer.css" media="screen" />
+    <script type="text/javascript" src="http://127.0.0.1/viewer-master/dist/viewer.min.js" ></script>
+    <script type="text/javascript" src="http://127.0.0.1/viewer-master/dist/viewer.irsy.js" ></script>
+<style type="text/css">
+</style>
+    <div id="content" style="margin: 10px;">
+        <div id="div_file">
+            <script type="text/javascript">
+            $(function(){
+                //展开收起
+                $(document).on('click', '.active-node', function(){
+                    $(this).parent().parent().nextUntil('.node').show();
+                    $(this).text('[-收起]');
+                    $(this).removeClass('active-node');
+                    $(this).addClass('passive-node');
+                });
+                $(document).on('click', '.passive-node', function(){
+                    $(this).parent().parent().nextUntil('.node').hide();
+                    $(this).text('[+展开]');
+                    $(this).removeClass('passive-node');
+                    $(this).addClass('active-node');
+                });
+                //图片浏览
+                $('#contentTable').viewerDefault();
+//                 $("a[rel=img_group_docType]").fancybox({
+//                     'transitionIn'      : 'none',
+//                     'transitionOut'     : 'none',
+//                     'titlePosition'     : 'over',
+//                     'overlayShow'       : false,
+//                     'titleFormat'       : function(title, currentArray, currentIndex, currentOpts) {
+//                         return '<span id="fancybox-title-over">Image ' + (currentIndex + 1) + ' / ' + currentArray.length + (title.length ? ' &nbsp; ' + title : '') + '</span>';
+//                     }
+//                 });
+            
+        });
+    </script>
+    <table id="contentTable" class="table table-striped table-bordered" style="table-layout:fixed;">
+        
+            <tr class="node">
+                <td style="width:60%">
+                    <span class="pull-left">
+                    企业贷款申请表
+                    
+                        <span class="text-error">*</span>
+                    
+                    </span>
+                    <span class="pull-right text-right">
+                        
+                        电子档
+                    </span>
+                </td>
+                <td>1份</td>
+                <td>
+                    
+                    
+                        <a href="javascript:void(0)" class="active-node">[+展开]</a>
+                    
+                </td>
+                <td>
+                    
+                    
+                    <span style="color:#0d941d;">√</span>
+                </td>
+            </tr>
+            
+            
+            
+                <tr class="leaf">
+                    <td>&nbsp;&nbsp;&nbsp;&nbsp;
+                        
+                            
+                            
+                                <a href="/irsy-web-manager/a/order/orderInfo/preview?docId=6600" target="_blank" title="i融税银申请表0823.xls">
+                                    i融税银申请表0823.xls
+                                </a>
+                            
+                            
+                        
+                    </td>
+                    <td colspan="3">
+                        2016-12-14 10:24:14
+                    </td>
+                </tr>
+            
+            
+        
+            <tr class="node">
+                <td style="width:60%">
+                    <span class="pull-left">
+                    营业执照副本
+                    
+                        <span class="text-error">*</span>
+                    
+                    </span>
+                    <span class="pull-right text-right">
+                        图片
+                        
+                    </span>
+                </td>
+                <td>1份</td>
+                <td>
+                    
+                    
+                        <a href="javascript:void(0)" class="active-node">[+展开]</a>
+                    
+                </td>
+                <td>
+                    
+                    
+                    <span style="color:#0d941d;">√</span>
+                </td>
+            </tr>
+            
+            
+            
+                <tr class="leaf">
+                    <td>&nbsp;&nbsp;&nbsp;&nbsp;
+                        
+                            
+
+
+<!--                                 </a> -->
+                                <a rel="img_group_docType" href="javascript:void(0)" title="7.jpg" class="viewer-trigger">
+                                    7.jpg
+                                </a>
+                                <img style="display:none" data-original="/irsy-web-manager/dataFile/161214652325000698/F0002/148168247722182252.jpg" 
+                                        src="/irsy-web-manager/dataFile/161214652325000698/F0002/148168247722182252.jpg" alt="7.jpg">
+                            
+                            
+                            
+                        
+                    </td>
+                    <td colspan="3">
+                        2016-12-14 10:27:57
+                    </td>
+                </tr>
+            
+            
+        
+            <tr class="node">
+                <td style="width:60%">
+                    <span class="pull-left">
+                    组织机构代码证副本
+                    
+                        <span class="text-error">*</span>
+                    
+                    </span>
+                    <span class="pull-right text-right">
+                        图片
+                        
+                    </span>
+                </td>
+                <td>1份</td>
+                <td>
+                    
+                    
+                        <a href="javascript:void(0)" class="active-node">[+展开]</a>
+                    
+                </td>
+                <td>
+                    
+                    
+                    <span style="color:#0d941d;">√</span>
+                </td>
+            </tr>
+            
+            
+            
+                <tr class="leaf">
+                    <td>&nbsp;&nbsp;&nbsp;&nbsp;
+                        
+                            
+
+
+<!--                                 </a> -->
+                                <a rel="img_group_docType" href="javascript:void(0)" title="(3).png" class="viewer-trigger">
+                                    (3).png
+                                </a>
+                                <img style="display:none" data-original="/irsy-web-manager/dataFile/161214652325000698/F0003/148168254047263231.png" 
+                                        src="/irsy-web-manager/dataFile/161214652325000698/F0003/148168254047263231.png" alt="(3).png">
+                            
+                            
+                            
+                        
+                    </td>
+                    <td colspan="3">
+                        2016-12-14 10:29:00
+                    </td>
+                </tr>
+            
+            
+        
+            <tr class="node">
+                <td style="width:60%">
+                    <span class="pull-left">
+                    国地税税务登记副本
+                    
+                        <span class="text-error">*</span>
+                    
+                    </span>
+                    <span class="pull-right text-right">
+                        图片
+                        
+                    </span>
+                </td>
+                <td>1份</td>
+                <td>
+                    
+                    
+                        <a href="javascript:void(0)" class="active-node">[+展开]</a>
+                    
+                </td>
+                <td>
+                    
+                    
+                    <span style="color:#0d941d;">√</span>
+                </td>
+            </tr>
+            
+            
+            
+                <tr class="leaf">
+                    <td>&nbsp;&nbsp;&nbsp;&nbsp;
+                        
+                            
+
+
+<!--                                 </a> -->
+                                <a rel="img_group_docType" href="javascript:void(0)" title="14.jpg" class="viewer-trigger">
+                                    14.jpg
+                                </a>
+                                <img style="display:none" data-original="/irsy-web-manager/dataFile/161214652325000698/F0004/148168254274313281.jpg" 
+                                        src="/irsy-web-manager/dataFile/161214652325000698/F0004/148168254274313281.jpg" alt="14.jpg">
+                            
+                            
+                            
+                        
+                    </td>
+                    <td colspan="3">
+                        2016-12-14 10:29:03
+                    </td>
+                </tr>
+            
+            
+        
+            <tr class="node">
+                <td style="width:60%">
+                    <span class="pull-left">
+                    公司章程
+                    
+                        <span class="text-error">*</span>
+                    
+                    </span>
+                    <span class="pull-right text-right">
+                        图片
+                        
+                    </span>
+                </td>
+                <td>1份</td>
+                <td>
+                    
+                    
+                        <a href="javascript:void(0)" class="active-node">[+展开]</a>
+                    
+                </td>
+                <td>
+                    
+                    
+                    <span style="color:#0d941d;">√</span>
+                </td>
+            </tr>
+            
+            
+            
+                <tr class="leaf">
+                    <td>&nbsp;&nbsp;&nbsp;&nbsp;
+                        
+                            
+
+
+<!--                                 </a> -->
+                                <a rel="img_group_docType" href="javascript:void(0)" title="4.jpeg" class="viewer-trigger">
+                                    4.jpeg
+                                </a>
+                                <img style="display:none" data-original="/irsy-web-manager/dataFile/161214652325000698/F0005/148168254498809125.jpeg" 
+                                        src="/irsy-web-manager/dataFile/161214652325000698/F0005/148168254498809125.jpeg" alt="4.jpeg">
+                            
+                            
+                            
+                        
+                    </td>
+                    <td colspan="3">
+                        2016-12-14 10:29:05
+                    </td>
+                </tr>
+            
+            
+        
+            <tr class="node">
+                <td style="width:60%">
+                    <span class="pull-left">
+                    贷款卡及密码
+                    
+                        <span class="text-error">*</span>
+                    
+                    </span>
+                    <span class="pull-right text-right">
+                        图片
+                        
+                    </span>
+                </td>
+                <td>1份</td>
+                <td>
+                    
+                    
+                        <a href="javascript:void(0)" class="active-node">[+展开]</a>
+                    
+                </td>
+                <td>
+                    
+                    
+                    <span style="color:#0d941d;">√</span>
+                </td>
+            </tr>
+            
+            
+            
+                <tr class="leaf">
+                    <td>&nbsp;&nbsp;&nbsp;&nbsp;
+                        
+                            
+
+
+<!--                                 </a> -->
+                                <a rel="img_group_docType" href="javascript:void(0)" title="FaPiao.jpg" class="viewer-trigger">
+                                    FaPiao.jpg
+                                </a>
+                                <img style="display:none" data-original="/irsy-web-manager/dataFile/161214652325000698/F0007/148168221725874860.jpg" 
+                                        src="/irsy-web-manager/dataFile/161214652325000698/F0007/148168221725874860.jpg" alt="FaPiao.jpg">
+                            
+                            
+                            
+                        
+                    </td>
+                    <td colspan="3">
+                        2016-12-14 10:23:37
+                    </td>
+                </tr>
+            
+            
+        
+            <tr class="node">
+                <td style="width:60%">
+                    <span class="pull-left">
+                    近两年企业纳税税务数据（申报终端打印）及查询授权书 
+                    
+                        <span class="text-error">*</span>
+                    
+                    </span>
+                    <span class="pull-right text-right">
+                        图片
+                        
+                    </span>
+                </td>
+                <td>1份</td>
+                <td>
+                    
+                    
+                        <a href="javascript:void(0)" class="active-node">[+展开]</a>
+                    
+                </td>
+                <td>
+                    
+                    
+                    <span style="color:#0d941d;">√</span>
+                </td>
+            </tr>
+            
+            
+            
+                <tr class="leaf">
+                    <td>&nbsp;&nbsp;&nbsp;&nbsp;
+                        
+                            
+
+
+<!--                                 </a> -->
+                                <a rel="img_group_docType" href="javascript:void(0)" title="18.jpg" class="viewer-trigger">
+                                    18.jpg
+                                </a>
+                                <img style="display:none" data-original="/irsy-web-manager/dataFile/161214652325000698/F0008/148168254880626253.jpg" 
+                                        src="/irsy-web-manager/dataFile/161214652325000698/F0008/148168254880626253.jpg" alt="18.jpg">
+                            
+                            
+                            
+                        
+                    </td>
+                    <td colspan="3">
+                        2016-12-14 10:29:09
+                    </td>
+                </tr>
+            
+            
+        
+            <tr class="node">
+                <td style="width:60%">
+                    <span class="pull-left">
+                    同纳税对应的财务报表，及上一月度的财务报表
+                    
+                        <span class="text-error">*</span>
+                    
+                    </span>
+                    <span class="pull-right text-right">
+                        
+                        电子档
+                    </span>
+                </td>
+                <td>1份</td>
+                <td>
+                    
+                    
+                        <a href="javascript:void(0)" class="active-node">[+展开]</a>
+                    
+                </td>
+                <td>
+                    
+                    
+                    <span style="color:#0d941d;">√</span>
+                </td>
+            </tr>
+            
+            
+                
+                    
+                    
+                    <tr class="leaf">
+                        <td colspan="4">&nbsp;&nbsp;&nbsp;&nbsp;
+                             <a href="/irsy-web-manager/a/order/orderInfo/preview?docId=6601" target="_blank" title="">
+                                 业务报告常用表格2016081501.xlsx
+                             </a>
+                        </td>
+                    </tr>
+                
+                
+            
+            
+        
+            <tr class="node">
+                <td style="width:60%">
+                    <span class="pull-left">
+                    法定代表人身份证
+                    
+                        <span class="text-error">*</span>
+                    
+                    </span>
+                    <span class="pull-right text-right">
+                        图片
+                        
+                    </span>
+                </td>
+                <td>1份</td>
+                <td>
+                    
+                    
+                        <a href="javascript:void(0)" class="active-node">[+展开]</a>
+                    
+                </td>
+                <td>
+                    
+                    
+                    <span style="color:#0d941d;">√</span>
+                </td>
+            </tr>
+            
+            
+            
+                <tr class="leaf">
+                    <td>&nbsp;&nbsp;&nbsp;&nbsp;
+                        
+                            
+
+
+<!--                                 </a> -->
+                                <a rel="img_group_docType" href="javascript:void(0)" title="44.jpg" class="viewer-trigger">
+                                    44.jpg
+                                </a>
+                                <img style="display:none" data-original="/irsy-web-manager/dataFile/161214652325000698/F0010/148168255504230658.jpg" 
+                                        src="/irsy-web-manager/dataFile/161214652325000698/F0010/148168255504230658.jpg" alt="44.jpg">
+                            
+                            
+                            
+                        
+                    </td>
+                    <td colspan="3">
+                        2016-12-14 10:29:15
+                    </td>
+                </tr>
+            
+            
+        
+            <tr class="node">
+                <td style="width:60%">
+                    <span class="pull-left">
+                    实际控制人及配偶身份证
+                    
+                        <span class="text-error">*</span>
+                    
+                    </span>
+                    <span class="pull-right text-right">
+                        图片
+                        
+                    </span>
+                </td>
+                <td>1份</td>
+                <td>
+                    
+                    
+                        <a href="javascript:void(0)" class="active-node">[+展开]</a>
+                    
+                </td>
+                <td>
+                    
+                    
+                    <span style="color:#0d941d;">√</span>
+                </td>
+            </tr>
+            
+            
+            
+                <tr class="leaf">
+                    <td>&nbsp;&nbsp;&nbsp;&nbsp;
+                        
+                            
+
+
+<!--                                 </a> -->
+                                <a rel="img_group_docType" href="javascript:void(0)" title="65.jpg" class="viewer-trigger">
+                                    65.jpg
+                                </a>
+                                <img style="display:none" data-original="/irsy-web-manager/dataFile/161214652325000698/F0011/148168255972815992.jpg" 
+                                        src="/irsy-web-manager/dataFile/161214652325000698/F0011/148168255972815992.jpg" alt="65.jpg">
+                            
+                            
+                            
+                        
+                    </td>
+                    <td colspan="3">
+                        2016-12-14 10:29:20
+                    </td>
+                </tr>
+            
+            
+        
+            <tr class="node">
+                <td style="width:60%">
+                    <span class="pull-left">
+                    法定代表人、实际控制人履历表
+                    
+                        <span class="text-error">*</span>
+                    
+                    </span>
+                    <span class="pull-right text-right">
+                        
+                        电子档
+                    </span>
+                </td>
+                <td>1份</td>
+                <td>
+                    
+                    
+                        <a href="javascript:void(0)" class="active-node">[+展开]</a>
+                    
+                </td>
+                <td>
+                    
+                    
+                    <span style="color:#0d941d;">√</span>
+                </td>
+            </tr>
+            
+            
+            
+                <tr class="leaf">
+                    <td>&nbsp;&nbsp;&nbsp;&nbsp;
+                        
+                            
+                            
+                                <a href="/irsy-web-manager/a/order/orderInfo/preview?docId=6603" target="_blank" title="i融税银第七期功能开发说明文档1113.docx">
+                                    i融税银第七期功能开发说明文档1113.docx
+                                </a>
+                            
+                            
+                        
+                    </td>
+                    <td colspan="3">
+                        2016-12-14 10:28:09
+                    </td>
+                </tr>
+            
+            
+        
+            <tr class="node">
+                <td style="width:60%">
+                    <span class="pull-left">
+                    法定代表人、实际控制人资产明细（房产证明、存款、股票等）
+                    
+                        <span class="text-error">*</span>
+                    
+                    </span>
+                    <span class="pull-right text-right">
+                        图片
+                        
+                    </span>
+                </td>
+                <td>1份</td>
+                <td>
+                    
+                    
+                        <a href="javascript:void(0)" class="active-node">[+展开]</a>
+                    
+                </td>
+                <td>
+                    
+                    
+                    <span style="color:#0d941d;">√</span>
+                </td>
+            </tr>
+            
+            
+            
+                <tr class="leaf">
+                    <td>&nbsp;&nbsp;&nbsp;&nbsp;
+                        
+                            
+
+
+<!--                                 </a> -->
+                                <a rel="img_group_docType" href="javascript:void(0)" title="28.jpg" class="viewer-trigger">
+                                    28.jpg
+                                </a>
+                                <img style="display:none" data-original="/irsy-web-manager/dataFile/161214652325000698/F0013/148168256275488407.jpg" 
+                                        src="/irsy-web-manager/dataFile/161214652325000698/F0013/148168256275488407.jpg" alt="28.jpg">
+                            
+                            
+                            
+                        
+                    </td>
+                    <td colspan="3">
+                        2016-12-14 10:29:23
+                    </td>
+                </tr>
+            
+            
+        
+            <tr class="node">
+                <td style="width:60%">
+                    <span class="pull-left">
+                    近12个月企业、个人的主要银行流水（含摘要）
+                    
+                        <span class="text-error">*</span>
+                    
+                    </span>
+                    <span class="pull-right text-right">
+                        
+                        电子档
+                    </span>
+                </td>
+                <td>1份</td>
+                <td>
+                    
+                    
+                        <a href="javascript:void(0)" class="active-node">[+展开]</a>
+                    
+                </td>
+                <td>
+                    
+                    
+                    <span style="color:#0d941d;">√</span>
+                </td>
+            </tr>
+            
+            
+            
+                <tr class="leaf">
+                    <td>&nbsp;&nbsp;&nbsp;&nbsp;
+                        
+                            
+                            
+                                <a href="/irsy-web-manager/a/order/orderInfo/preview?docId=6604" target="_blank" title="i融税银百度问答.xlsx">
+                                    i融税银百度问答.xlsx
+                                </a>
+                            
+                            
+                        
+                    </td>
+                    <td colspan="3">
+                        2016-12-14 10:28:16
+                    </td>
+                </tr>
+            
+            
+        
+            <tr class="node">
+                <td style="width:60%">
+                    <span class="pull-left">
+                    近12个月企业的水费、电费单据
+                    
+                        <span class="text-error">*</span>
+                    
+                    </span>
+                    <span class="pull-right text-right">
+                        
+                        电子档
+                    </span>
+                </td>
+                <td>1份</td>
+                <td>
+                    
+                    
+                        <a href="javascript:void(0)" class="active-node">[+展开]</a>
+                    
+                </td>
+                <td>
+                    
+                    
+                    <span style="color:#0d941d;">√</span>
+                </td>
+            </tr>
+            
+            
+            
+                <tr class="leaf">
+                    <td>&nbsp;&nbsp;&nbsp;&nbsp;
+                        
+                            
+                            
+                                <a href="/irsy-web-manager/a/order/orderInfo/preview?docId=6605" target="_blank" title="泰尊尚五天包团(详细行程）doc - 副本.doc">
+                                    泰尊尚五天包团(详细行程）doc - 副本.doc
+                                </a>
+                            
+                            
+                        
+                    </td>
+                    <td colspan="3">
+                        2016-12-14 10:28:23
+                    </td>
+                </tr>
+            
+            
+        
+            <tr class="node">
+                <td style="width:60%">
+                    <span class="pull-left">
+                    企业主要上下游信息表 
+                    
+                        <span class="text-error">*</span>
+                    
+                    </span>
+                    <span class="pull-right text-right">
+                        
+                        电子档
+                    </span>
+                </td>
+                <td>1份</td>
+                <td>
+                    
+                    
+                        <a href="javascript:void(0)" class="active-node">[+展开]</a>
+                    
+                </td>
+                <td>
+                    
+                    
+                    <span style="color:#0d941d;">√</span>
+                </td>
+            </tr>
+            
+            
+            
+                <tr class="leaf">
+                    <td>&nbsp;&nbsp;&nbsp;&nbsp;
+                        
+                            
+                            
+                                <a href="/irsy-web-manager/a/order/orderInfo/preview?docId=6606" target="_blank" title="测试数据：个人信用报告.pdf">
+                                    测试数据：个人信用报告.pdf
+                                </a>
+                            
+                            
+                        
+                    </td>
+                    <td colspan="3">
+                        2016-12-14 10:28:29
+                    </td>
+                </tr>
+            
+            
+        
+            <tr class="node">
+                <td style="width:60%">
+                    <span class="pull-left">
+                    近三个月的主要购、销合同
+                    
+                        <span class="text-error">*</span>
+                    
+                    </span>
+                    <span class="pull-right text-right">
+                        
+                        电子档
+                    </span>
+                </td>
+                <td>1份</td>
+                <td>
+                    
+                    
+                        <a href="javascript:void(0)" class="active-node">[+展开]</a>
+                    
+                </td>
+                <td>
+                    
+                    
+                    <span style="color:#0d941d;">√</span>
+                </td>
+            </tr>
+            
+            
+            
+                <tr class="leaf">
+                    <td>&nbsp;&nbsp;&nbsp;&nbsp;
+                        
+                            
+                            
+                                <a href="/irsy-web-manager/a/order/orderInfo/preview?docId=6607" target="_blank" title="添加人员导入模板【2016-12-01】.xlsx">
+                                    添加人员导入模板【2016-12-01】.xlsx
+                                </a>
+                            
+                            
+                        
+                    </td>
+                    <td colspan="3">
+                        2016-12-14 10:28:34
+                    </td>
+                </tr>
+            
+            
+        
+            <tr class="node">
+                <td style="width:60%">
+                    <span class="pull-left">
+                    应收账款明细表
+                    
+                        <span class="text-error">*</span>
+                    
+                    </span>
+                    <span class="pull-right text-right">
+                        
+                        电子档
+                    </span>
+                </td>
+                <td>1份</td>
+                <td>
+                    
+                    
+                        <a href="javascript:void(0)" class="active-node">[+展开]</a>
+                    
+                </td>
+                <td>
+                    
+                    
+                    <span style="color:#0d941d;">√</span>
+                </td>
+            </tr>
+            
+            
+            
+                <tr class="leaf">
+                    <td>&nbsp;&nbsp;&nbsp;&nbsp;
+                        
+                            
+                            
+                                <a href="/irsy-web-manager/a/order/orderInfo/preview?docId=6608" target="_blank" title="队伍编排.doc">
+                                    队伍编排.doc
+                                </a>
+                            
+                            
+                        
+                    </td>
+                    <td colspan="3">
+                        2016-12-14 10:28:47
+                    </td>
+                </tr>
+            
+            
+        
+            <tr class="node">
+                <td style="width:60%">
+                    <span class="pull-left">
+                    应付账款明细表
+                    
+                        <span class="text-error">*</span>
+                    
+                    </span>
+                    <span class="pull-right text-right">
+                        
+                        电子档
+                    </span>
+                </td>
+                <td>1份</td>
+                <td>
+                    
+                    
+                        <a href="javascript:void(0)" class="active-node">[+展开]</a>
+                    
+                </td>
+                <td>
+                    
+                    
+                    <span style="color:#0d941d;">√</span>
+                </td>
+            </tr>
+            
+            
+            
+                <tr class="leaf">
+                    <td>&nbsp;&nbsp;&nbsp;&nbsp;
+                        
+                            
+
+
+<!--                                 </a> -->
+                                <a rel="img_group_docType" href="javascript:void(0)" title="47.jpg" class="viewer-trigger">
+                                    47.jpg
+                                </a>
+                                <img style="display:none" data-original="/irsy-web-manager/dataFile/161214652325000698/F0019/148168256915131307.jpg" 
+                                        src="/irsy-web-manager/dataFile/161214652325000698/F0019/148168256915131307.jpg" alt="47.jpg">
+                            
+                            
+                            
+                        
+                    </td>
+                    <td colspan="3">
+                        2016-12-14 10:29:29
+                    </td>
+                </tr>
+            
+            
+        
+            <tr class="node">
+                <td style="width:60%">
+                    <span class="pull-left">
+                    存货明细表
+                    
+                        <span class="text-error">*</span>
+                    
+                    </span>
+                    <span class="pull-right text-right">
+                        
+                        电子档
+                    </span>
+                </td>
+                <td>1份</td>
+                <td>
+                    
+                    
+                        <a href="javascript:void(0)" class="active-node">[+展开]</a>
+                    
+                </td>
+                <td>
+                    
+                    
+                    <span style="color:#0d941d;">√</span>
+                </td>
+            </tr>
+            
+            
+            
+                <tr class="leaf">
+                    <td>&nbsp;&nbsp;&nbsp;&nbsp;
+                        
+                            
+
+
+<!--                                 </a> -->
+                                <a rel="img_group_docType" href="javascript:void(0)" title="43.png" class="viewer-trigger">
+                                    43.png
+                                </a>
+                                <img style="display:none" data-original="/irsy-web-manager/dataFile/161214652325000698/F0020/148168257202712342.png" 
+                                        src="/irsy-web-manager/dataFile/161214652325000698/F0020/148168257202712342.png" alt="43.png">
+                            
+                            
+                            
+                        
+                    </td>
+                    <td colspan="3">
+                        2016-12-14 10:29:32
+                    </td>
+                </tr>
+            
+            
+        
+            <tr class="node">
+                <td style="width:60%">
+                    <span class="pull-left">
+                    固定资产明细表
+                    
+                        <span class="text-error">*</span>
+                    
+                    </span>
+                    <span class="pull-right text-right">
+                        
+                        电子档
+                    </span>
+                </td>
+                <td>1份</td>
+                <td>
+                    
+                    
+                        <a href="javascript:void(0)" class="active-node">[+展开]</a>
+                    
+                </td>
+                <td>
+                    
+                    
+                    <span style="color:#0d941d;">√</span>
+                </td>
+            </tr>
+            
+            
+            
+                <tr class="leaf">
+                    <td>&nbsp;&nbsp;&nbsp;&nbsp;
+                        
+                            
+
+
+<!--                                 </a> -->
+                                <a rel="img_group_docType" href="javascript:void(0)" title="1002牵牛花.jpg" class="viewer-trigger">
+                                    1002牵牛花.jpg
+                                </a>
+                                <img style="display:none" data-original="/irsy-web-manager/dataFile/161214652325000698/F0021/148168257498980795.jpg" 
+                                        src="/irsy-web-manager/dataFile/161214652325000698/F0021/148168257498980795.jpg" alt="1002牵牛花.jpg">
+                            
+                            
+                            
+                        
+                    </td>
+                    <td colspan="3">
+                        2016-12-14 10:29:35
+                    </td>
+                </tr>
+            
+            
+        
+            <tr class="node">
+                <td style="width:60%">
+                    <span class="pull-left">
+                    企业、个人对外负债及担保明细表
+                    
+                        <span class="text-error">*</span>
+                    
+                    </span>
+                    <span class="pull-right text-right">
+                        
+                        电子档
+                    </span>
+                </td>
+                <td>1份</td>
+                <td>
+                    
+                    
+                        <a href="javascript:void(0)" class="active-node">[+展开]</a>
+                    
+                </td>
+                <td>
+                    
+                    
+                    <span style="color:#0d941d;">√</span>
+                </td>
+            </tr>
+            
+            
+            
+                <tr class="leaf">
+                    <td>&nbsp;&nbsp;&nbsp;&nbsp;
+                        
+                            
+
+
+<!--                                 </a> -->
+                                <a rel="img_group_docType" href="javascript:void(0)" title="1001夕颜.jpg" class="viewer-trigger">
+                                    1001夕颜.jpg
+                                </a>
+                                <img style="display:none" data-original="/irsy-web-manager/dataFile/161214652325000698/F0022/148168257979788702.jpg" 
+                                        src="/irsy-web-manager/dataFile/161214652325000698/F0022/148168257979788702.jpg" alt="1001夕颜.jpg">
+                            
+                            
+                            
+                        
+                    </td>
+                    <td colspan="3">
+                        2016-12-14 10:29:40
+                    </td>
+                </tr>
+            
+            
+        
+            <tr class="node">
+                <td style="width:60%">
+                    <span class="pull-left">
+                    近期房租缴纳单据（至少含3个月）及租赁合同
+                    
+                        <span class="text-error">*</span>
+                    
+                    </span>
+                    <span class="pull-right text-right">
+                        
+                        电子档
+                    </span>
+                </td>
+                <td>1份</td>
+                <td>
+                    
+                    
+                        <a href="javascript:void(0)" class="active-node">[+展开]</a>
+                    
+                </td>
+                <td>
+                    
+                    
+                    <span style="color:#0d941d;">√</span>
+                </td>
+            </tr>
+            
+            
+            
+                <tr class="leaf">
+                    <td>&nbsp;&nbsp;&nbsp;&nbsp;
+                        
+                            
+
+
+<!--                                 </a> -->
+                                <a rel="img_group_docType" href="javascript:void(0)" title="101.jpg" class="viewer-trigger">
+                                    101.jpg
+                                </a>
+                                <img style="display:none" data-original="/irsy-web-manager/dataFile/161214652325000698/F0023/148168258320867300.jpg" 
+                                        src="/irsy-web-manager/dataFile/161214652325000698/F0023/148168258320867300.jpg" alt="101.jpg">
+                            
+                            
+                            
+                        
+                    </td>
+                    <td colspan="3">
+                        2016-12-14 10:29:43
+                    </td>
+                </tr>
+            
+            
+        
+            <tr class="node">
+                <td style="width:60%">
+                    <span class="pull-left">
+                    企业履历高管
+                    
+                    </span>
+                    <span class="pull-right text-right">
+                        
+                        电子档
+                    </span>
+                </td>
+                <td>1份</td>
+                <td>
+                    
+                    
+                        <a href="javascript:void(0)" class="active-node">[+展开]</a>
+                    
+                </td>
+                <td>
+                    
+                    
+                    <span style="color:#0d941d;">√</span>
+                </td>
+            </tr>
+            
+            
+            
+                <tr class="leaf">
+                    <td>&nbsp;&nbsp;&nbsp;&nbsp;
+                        
+                            
+
+
+<!--                                 </a> -->
+                                <a rel="img_group_docType" href="javascript:void(0)" title="80.jpg" class="viewer-trigger">
+                                    80.jpg
+                                </a>
+                                <img style="display:none" data-original="/irsy-web-manager/dataFile/161214652325000698/F0025/148168258715132213.jpg" 
+                                        src="/irsy-web-manager/dataFile/161214652325000698/F0025/148168258715132213.jpg" alt="80.jpg">
+                            
+                            
+                            
+                        
+                    </td>
+                    <td colspan="3">
+                        2016-12-14 10:29:47
+                    </td>
+                </tr>
+            
+            
+        
+    </table>
+    
+    
+            
+        </div>
+    </div>
+
+
+	<script type="text/javascript">//<!-- 无框架时，左上角显示菜单图标按钮。
+		if(!(self.frameElement && self.frameElement.tagName=="IFRAME")){
+			$("body").prepend("<i id=\"btnMenu\" class=\"icon-th-list\" style=\"cursor:pointer;float:right;margin:10px;\"></i><div id=\"menuContent\"></div>");
+			$("#btnMenu").click(function(){
+				top.$.jBox('get:/irsy-web-manager/a/sys/menu/treeselect;JSESSIONID=kqb4ca3z80981hx9lossmjvei', {title:'选择菜单', buttons:{'关闭':true}, width:300, height: 350, top:10});
+				//if ($("#menuContent").html()==""){$.get("/irsy-web-manager/a/sys/menu/treeselect", function(data){$("#menuContent").html(data);});}else{$("#menuContent").toggle(100);}
+			});
+		}//-->
+	</script>
+</body>
+</html>
