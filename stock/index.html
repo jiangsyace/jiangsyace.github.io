@@ -46,8 +46,20 @@ h1 {
 </style>
 </head>
 <body>
+
 	<div id="inner">
-        
+        <table id="data_table">
+            <thead>
+                <tr>
+                    <th>名称</th>
+                    <th>现价</th>
+                    <th>涨/跌幅<a href="javascript:;" id="reloadData">刷新</a></th>
+                </tr>
+            </thead>
+            <tbody>
+
+            </tbody>
+        </table>
     <!-- <p>
     分时线的查询：
     <img src="http://image.sinajs.cn/newchart/min/n/sh000001.gif"/>
@@ -67,16 +79,58 @@ h1 {
 	</div>
 	<div id="footer">
 		Made by <a href="http://bins.top/blog">Jiangsy</a> <a href="http://bins.top/blog">blog</a>
-	</div>
-    <script type="text/javascript" src="http://hq.sinajs.cn/list=s_sh000001,s_sz399001" charset="gb2312"></script>
-    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
-    <script type="text/javascript" src="index.js" ></script>
+    </div>
+    <script src="jquery.min.js"></script>
+    <script type="text/javascript" src="index.js"></script>
+    <script>
+        // var hq_str_s_sh000001 = "上证指数,3094.668,-128.073,-3.97,436653,5458126";
+        //     数据含义分别为：指数名称，当前点数，当前价格，涨跌率，成交量（手），成交额（万元）；
+        var s_sh000001 = 's_sh000001';//上证指数
+        var s_sz399001 = 's_sz399001';//深圳成指
+        var s_sh600887 = 's_sh600887';//伊利股份
+        var s_sz000858 = 's_sz000858';//五粮液
+        var s_sh600519 = 's_sh600519';//贵州茅台
+        var s_sz002304 = 's_sz002304';//洋河股份
+        var s_sz000568 = 's_sz000568';//泸州老窖
+        var s_sz000333 = 's_sz000333';//美的集团
+        var s_sh600104 = 's_sh600104';//上汽集团
+        var group1 = [];
+        group1.push(s_sh600887);
+        group1.push(s_sz000858);
+        group1.push(s_sh600519);
+        group1.push(s_sz002304);
+        group1.push(s_sz000568);
+        group1.push(s_sz000333);
+        group1.push(s_sh600104);
+        
+        loadScript({scriptUrl: "http://hq.sinajs.cn/list=" + group1.toString(), callback:function(){
+            window.dispatchEvent(new Event('b-loaded'));
+        }});
+
+    </script>
+    <!-- <script type="text/javascript" src="http://hq.sinajs.cn/list=s_sh000001" charset="gb2312"></script> -->
     <script>
 
-    $(function(){
-        $('#inner').append("<p>" + hq_str_s_sh000001 + "</p>");
-        $('#inner').append("<p>" + hq_str_s_sz399001 + "</p>");
-    });
+        $(function(){
+            window.addEventListener('b-loaded', function () {
+                var tbody = '';
+                tbody += "<tr><td>" + hq_str_s_sh600887.split(',')[0] + "</td><td>" + hq_str_s_sh600887.split(',')[1] + "</td><td>" + hq_str_s_sh600887.split(',')[3] + "</td></tr>";
+                tbody += "<tr><td>" + hq_str_s_sz000858.split(',')[0] + "</td><td>" + hq_str_s_sz000858.split(',')[1] + "</td><td>" + hq_str_s_sz000858.split(',')[3] + "</td></tr>";
+                tbody += "<tr><td>" + hq_str_s_sh600519.split(',')[0] + "</td><td>" + hq_str_s_sh600519.split(',')[1] + "</td><td>" + hq_str_s_sh600519.split(',')[3] + "</td></tr>";
+                tbody += "<tr><td>" + hq_str_s_sz002304.split(',')[0] + "</td><td>" + hq_str_s_sz002304.split(',')[1] + "</td><td>" + hq_str_s_sz002304.split(',')[3] + "</td></tr>";
+                tbody += "<tr><td>" + hq_str_s_sz000568.split(',')[0] + "</td><td>" + hq_str_s_sz000568.split(',')[1] + "</td><td>" + hq_str_s_sz000568.split(',')[3] + "</td></tr>";
+                tbody += "<tr><td>" + hq_str_s_sz000333.split(',')[0] + "</td><td>" + hq_str_s_sz000333.split(',')[1] + "</td><td>" + hq_str_s_sz000333.split(',')[3] + "</td></tr>";
+                tbody += "<tr><td>" + hq_str_s_sh600104.split(',')[0] + "</td><td>" + hq_str_s_sh600104.split(',')[1] + "</td><td>" + hq_str_s_sh600104.split(',')[3] + "</td></tr>";
+                $('#data_table tbody').html(tbody);
+            }, false);
+            $('#reloadData').on('click', function(){
+                loadScript({
+                    scriptUrl: "http://hq.sinajs.cn/list=" + group1.toString(), callback: function () {
+                        window.dispatchEvent(new Event('b-loaded'));
+                    }
+                });
+            });
+        });
     </script>
 </body>
 </html>
