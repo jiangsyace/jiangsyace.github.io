@@ -1,0 +1,95 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Swipe JS</title>
+<meta nam="description" content="Swipe is a lightweight mobile slider with 1:1 touch movement, resistant bounds, scroll prevention, and completely library agnostic.">
+<meta name="keywords" content="Swipe, JS, javascript, 移动设备, 手机网页, 滑块, 触摸">
+<meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<link rel="stylesheet" href="main.css">
+<style>
+.swipe {
+	overflow: hidden;
+	visibility: hidden;
+	position: relative;
+}
+.swipe-wrap {
+	overflow: hidden;
+	position: relative;
+}
+.swipe-wrap > figure {
+	float: left;
+	width: 100%;
+	position: relative;
+}
+
+.erweima {text-align:center;}
+.erweima img {border:6px solid #FFF; margin-right:20px;}
+
+.title {background-color:#222; width:100%; position:fixed; top:0; left:0; font-size:12px; font-family:Verdana, Geneva, sans-serif; z-index:99999;}
+.title a {color:#999; text-decoration:none; line-height:24px; padding:0 10px; letter-spacing: 1px;}
+.title_r {float:right;}
+.title_l {float:left;}
+.title a:hover {background:#000;}
+
+</style>
+</head>
+<body class="page-swipe">
+<div class="title">
+    
+</div>
+<header>
+  <div id="slider" class="swipe" style="visibility: visible;">
+    <div class="swipe-wrap">
+      <figure>
+        <div class="wrap">
+          <div class="image" style="background:url(images/explorations1.jpg) center no-repeat;background-size: cover"> </div>
+        </div>
+      </figure>
+      <figure>
+        <div class="wrap">
+          <div class="image" style="background:url(images/explorations2.jpg) center no-repeat;background-size: cover"> </div>
+        </div>
+      </figure>
+      <figure>
+        <div class="wrap">
+          <div class="image" style="background:url(images/explorations3.jpg) center no-repeat;background-size: cover"> </div>
+        </div>
+      </figure>
+      <figure>
+        <div class="wrap">
+          <div class="image" style="background:url(images/fiftyandtwothirds3.jpg) center no-repeat;background-size: cover"> </div>
+        </div>
+      </figure>
+    </div>
+  </div>
+  <nav>
+    <ul id="position">
+      <li class="on"></li>
+      <li class=""></li>
+      <li class=""></li>
+      <li class=""></li>
+    </ul>
+  </nav>
+</header>
+<script src="swipe.js"></script> 
+<script>
+var slider =
+  Swipe(document.getElementById('slider'), {
+    auto: 3000,
+    continuous: true,
+    callback: function(pos) {
+
+      var i = bullets.length;
+      while (i--) {
+        bullets[i].className = ' ';
+      }
+      bullets[pos].className = 'on';
+
+    }
+  });
+var bullets = document.getElementById('position').getElementsByTagName('li');
+</script>
+</body>
+</html>
