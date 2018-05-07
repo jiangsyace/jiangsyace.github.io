@@ -7,59 +7,44 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge,IE=10,IE=9,IE=8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
 <link href="/favicon.png" rel="icon" type="image/png" />
-<META name="Keywords" CONTENT="HEEEEEEEEEY"><title>HEEEEEEEEEY</title>
-<style type="text/css">
-html,body {
-    width: 100%;
-    height: 100%;
-    border: 0px;
-    padding: 0px;
-    margin: 0px;
-}
-html, html * {
-    color: #eeeeee;
-    background-color: #222222;
-}
-* {
-    border-color: #555555;
-}
-#inner {
-    width: 100%;
-    height: 100%;
-    display: table;
-    text-align:center;
-    display:table;
-}
-h1 {
-    font-family: Helvetica, Arial, sans-serif;
-    font-size: 50px;
-    display:table-cell;
-    vertical-align:middle;
-}
-#footer {
-    bottom: 5px;
-    position: absolute;
-    color: #999;
-    font-family: Helvetica, Arial, sans-serif;
-    font-size: 11px;
-}
-</style>
+<link type="text/css" rel="stylesheet" href="materialize/css/materialize.min.css" media="screen,projection" />
+<link type="text/css" rel="stylesheet" href="index.css" />
+<meta name="Keywords" content="HEEEEEEEEEY">
+<title>HEEEEEEEEEY</title>
+
 </head>
 <body>
 
 	<div id="inner">
-        <table id="data_table">
-            <thead>
-                <tr>
-                    <th>名称</th>
-                    <th>现价</th>
-                    <th>涨/跌幅<a href="javascript:;" id="reloadData">刷新</a></th>
-                </tr>
-            </thead>
-            <tbody>
+        <div class="row">
+            <div class="col s12 m6">
+                <div class="card blue-grey darken-1">
+                    <div class="card-content white-text">
+                        <span class="card-title">Card Title</span>
+                        <table id="data_table">
+                            <thead>
+                                <tr>
+                                    <th>名称</th>
+                                    <th>现价</th>
+                                    <th>涨/跌幅
+                                        <a href="javascript:;" id="reloadData">刷新</a>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
 
-            </tbody>
-        </table>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="card-action">
+                        <a href="#">This is a link</a>
+                        <a href="#">This is a link</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        
     <!-- <p>
     分时线的查询：
     <img src="http://image.sinajs.cn/newchart/min/n/sh000001.gif"/>
@@ -80,9 +65,23 @@ h1 {
 	<div id="footer">
 		Made by <a href="http://bins.top/blog">Jiangsy</a> <a href="http://bins.top/blog">blog</a>
     </div>
-    <script src="jquery.min.js"></script>
+    <script type="text/javascript" src="jquery.min.js"></script>
+    <script type="text/javascript" src="materialize/js/materialize.js"></script>
     <script type="text/javascript" src="index.js"></script>
     <script>
+        $.getJSON('data.json', function(result){
+            console.info(result.fund);
+            $.each(result.fund, function(i, v){ 
+                var code = '';
+                $.each(v.data, function(ii, vv){ 
+                    code = code + ',' + vv.code;
+                }); 
+                if (code != '') {
+                    code = code.substr(1);
+                }
+                console.info(code);
+            });
+        });
         // var hq_str_s_sh000001 = "上证指数,3094.668,-128.073,-3.97,436653,5458126";
         //     数据含义分别为：指数名称，当前点数，当前价格，涨跌率，成交量（手），成交额（万元）；
         var s_sh000001 = 's_sh000001';//上证指数
@@ -130,6 +129,7 @@ h1 {
                     }
                 });
             });
+
         });
     </script>
 </body>
