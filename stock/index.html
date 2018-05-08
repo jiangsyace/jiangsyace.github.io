@@ -17,28 +17,62 @@
 
 	<div id="inner">
         <div class="row">
-            <div class="col s12 m6">
-                <div class="card blue-grey darken-1">
+            <div class="col s12 m4">
+                <div class="card darken-1">
                     <div class="card-content white-text">
-                        <span class="card-title">Card Title</span>
+                        <p class="card-title">Card Title<span>(10010)</span><span>10%</span></p>
                         <table id="data_table">
                             <thead>
                                 <tr>
                                     <th>名称</th>
-                                    <th>现价</th>
-                                    <th>涨/跌幅
-                                        <a href="javascript:;" id="reloadData">刷新</a>
-                                    </th>
+                                    <th>价格</th>
+                                    <th>幅度</th>
+                                    <th>操作</th>
                                 </tr>
                             </thead>
                             <tbody>
-
+                                <tr>
+                                    <th>xxx</th>
+                                    <th>100</th>
+                                    <th>10%</th>
+                                    <th>查看</th>
+                                </tr>
                             </tbody>
                         </table>
                     </div>
                     <div class="card-action">
-                        <a href="#">This is a link</a>
-                        <a href="#">This is a link</a>
+                        <a href="javascript:;" onclick="refreshData()" class="reloadData">刷新</a>
+                        <a href="#">关闭</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col s12 m4">
+                <div class="card darken-1">
+                    <div class="card-content white-text">
+                        <span class="card-title">Card Title</span>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>名称</th>
+                                    <th>价格</th>
+                                    <th>幅度</th>
+                                    <th>操作</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th>xxx</th>
+                                    <th>100</th>
+                                    <th>10%</th>
+                                    <th>查看</th>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="card-action">
+                        <a href="javascript:;" class="reloadData">刷新</a>
+                        <a href="#">关闭</a>
                     </div>
                 </div>
             </div>
@@ -65,22 +99,34 @@
 	<div id="footer">
 		Made by <a href="http://bins.top/blog">Jiangsy</a> <a href="http://bins.top/blog">blog</a>
     </div>
+    
     <script type="text/javascript" src="jquery.min.js"></script>
     <script type="text/javascript" src="materialize/js/materialize.js"></script>
     <script type="text/javascript" src="index.js"></script>
+    <script type="text/javascript" src="jquery.fund.js"></script>
     <script>
+        function refreshData(){
+            loadScript({scriptUrl: "http://hq.sinajs.cn/list=" + group1.toString(), callback:function(){ 
+                window.dispatchEvent(new Event('b-loaded'));
+            }});
+        }
         $.getJSON('data.json', function(result){
             console.info(result.fund);
             $.each(result.fund, function(i, v){ 
                 var code = '';
                 $.each(v.data, function(ii, vv){ 
+
                     code = code + ',' + vv.code;
+
                 }); 
                 if (code != '') {
                     code = code.substr(1);
                 }
                 console.info(code);
+                
+
             });
+            // $('#inner').fund({ name:"" });
         });
         // var hq_str_s_sh000001 = "上证指数,3094.668,-128.073,-3.97,436653,5458126";
         //     数据含义分别为：指数名称，当前点数，当前价格，涨跌率，成交量（手），成交额（万元）；
@@ -111,7 +157,13 @@
     <script>
 
         $(function(){
+
+            $('#inner').fund({
+                name:""
+            });
+
             window.addEventListener('b-loaded', function () {
+                console.info('b-loaded');
                 var tbody = '';
                 tbody += "<tr><td>" + hq_str_s_sh600887.split(',')[0] + "</td><td>" + hq_str_s_sh600887.split(',')[1] + "</td><td>" + hq_str_s_sh600887.split(',')[3] + "</td></tr>";
                 tbody += "<tr><td>" + hq_str_s_sz000858.split(',')[0] + "</td><td>" + hq_str_s_sz000858.split(',')[1] + "</td><td>" + hq_str_s_sz000858.split(',')[3] + "</td></tr>";

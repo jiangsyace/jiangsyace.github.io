@@ -9,8 +9,7 @@ body {
 
 html,
 html * {
-    color: #eeeeee;
-    background-color: #222222;
+    color: #555555;
 }
 
 * {
@@ -33,8 +32,8 @@ h1 {
 }
 
 #footer {
-    bottom: 5px;
-    position: absolute;
+    bottom: 0px;
+    position: fixed;
     color: #999;
     font-family: Helvetica, Arial, sans-serif;
     font-size: 11px;
