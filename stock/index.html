@@ -20,7 +20,7 @@
             <div class="col s12 m4">
                 <div class="card darken-1">
                     <div class="card-content white-text">
-                        <p class="card-title">Card Title<span>(10010)</span><span>10%</span></p>
+                        <p class="card-title">国泰国政食品饮料行业<span>(10010)</span><span>10%</span></p>
                         <table id="data_table">
                             <thead>
                                 <tr>
@@ -115,16 +115,12 @@
             $.each(result.fund, function(i, v){ 
                 var code = '';
                 $.each(v.data, function(ii, vv){ 
-
                     code = code + ',' + vv.code;
-
                 }); 
                 if (code != '') {
                     code = code.substr(1);
                 }
                 console.info(code);
-                
-
             });
             // $('#inner').fund({ name:"" });
         });
@@ -165,13 +161,13 @@
             window.addEventListener('b-loaded', function () {
                 console.info('b-loaded');
                 var tbody = '';
-                tbody += "<tr><td>" + hq_str_s_sh600887.split(',')[0] + "</td><td>" + hq_str_s_sh600887.split(',')[1] + "</td><td>" + hq_str_s_sh600887.split(',')[3] + "</td></tr>";
-                tbody += "<tr><td>" + hq_str_s_sz000858.split(',')[0] + "</td><td>" + hq_str_s_sz000858.split(',')[1] + "</td><td>" + hq_str_s_sz000858.split(',')[3] + "</td></tr>";
-                tbody += "<tr><td>" + hq_str_s_sh600519.split(',')[0] + "</td><td>" + hq_str_s_sh600519.split(',')[1] + "</td><td>" + hq_str_s_sh600519.split(',')[3] + "</td></tr>";
-                tbody += "<tr><td>" + hq_str_s_sz002304.split(',')[0] + "</td><td>" + hq_str_s_sz002304.split(',')[1] + "</td><td>" + hq_str_s_sz002304.split(',')[3] + "</td></tr>";
-                tbody += "<tr><td>" + hq_str_s_sz000568.split(',')[0] + "</td><td>" + hq_str_s_sz000568.split(',')[1] + "</td><td>" + hq_str_s_sz000568.split(',')[3] + "</td></tr>";
-                tbody += "<tr><td>" + hq_str_s_sz000333.split(',')[0] + "</td><td>" + hq_str_s_sz000333.split(',')[1] + "</td><td>" + hq_str_s_sz000333.split(',')[3] + "</td></tr>";
-                tbody += "<tr><td>" + hq_str_s_sh600104.split(',')[0] + "</td><td>" + hq_str_s_sh600104.split(',')[1] + "</td><td>" + hq_str_s_sh600104.split(',')[3] + "</td></tr>";
+                tbody += "<tr><td>" + hq_str_s_sh600887.split(',')[0] + "</td><td>" + hq_str_s_sh600887.split(',')[1] + "</td><td>" + hq_str_s_sh600887.split(',')[3] + "</td><td>查看</td></tr>";
+                tbody += "<tr><td>" + hq_str_s_sz000858.split(',')[0] + "</td><td>" + hq_str_s_sz000858.split(',')[1] + "</td><td>" + hq_str_s_sz000858.split(',')[3] + "</td><td>查看</td></tr>";
+                tbody += "<tr><td>" + hq_str_s_sh600519.split(',')[0] + "</td><td>" + hq_str_s_sh600519.split(',')[1] + "</td><td>" + hq_str_s_sh600519.split(',')[3] + "</td><td>查看</td></tr>";
+                tbody += "<tr><td>" + hq_str_s_sz002304.split(',')[0] + "</td><td>" + hq_str_s_sz002304.split(',')[1] + "</td><td>" + hq_str_s_sz002304.split(',')[3] + "</td><td>查看</td></tr>";
+                tbody += "<tr><td>" + hq_str_s_sz000568.split(',')[0] + "</td><td>" + hq_str_s_sz000568.split(',')[1] + "</td><td>" + hq_str_s_sz000568.split(',')[3] + "</td><td>查看</td></tr>";
+                tbody += "<tr><td>" + hq_str_s_sz000333.split(',')[0] + "</td><td>" + hq_str_s_sz000333.split(',')[1] + "</td><td>" + hq_str_s_sz000333.split(',')[3] + "</td><td>查看</td></tr>";
+                tbody += "<tr><td>" + hq_str_s_sh600104.split(',')[0] + "</td><td>" + hq_str_s_sh600104.split(',')[1] + "</td><td>" + hq_str_s_sh600104.split(',')[3] + "</td><td>查看</td></tr>";
                 $('#data_table tbody').html(tbody);
             }, false);
             $('#reloadData').on('click', function(){
