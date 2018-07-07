@@ -21,13 +21,12 @@ html,body {
     width: 100%;
 }
 .grid-item {  
-  width: 100px;
   margin: 10px;
   float: left;
   padding: 5px;
 } 
 .grid-item img {  
-  max-width: 100px;
+  max-width: 120px;
   height: auto;
 } 
 </style>
@@ -49,7 +48,7 @@ html,body {
         $(function(){  
           $('#container').masonry({
             itemSelector : '.grid-item',
-            columnWidth : 120,
+            columnWidth : 10,
             animate: true
           });
         });
