@@ -26,8 +26,7 @@
                 can1 = this.__createCanvas($body),
                 can2 = this.__createCanvas($body),
                 canAll = this.__createCanvas($body),
-                settings = this.options,
-                txtlen = settings.texts.length;
+                settings = this.options;
 
             settings.deg = settings.textRotate * Math.PI / 180; //js里的正弦余弦用的是弧度
 

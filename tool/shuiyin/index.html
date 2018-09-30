@@ -12,27 +12,32 @@
 <script type="text/javascript" src="./localResizeIMG/dist/lrz.bundle.js"></script>
 <title>图片添加水印</title>
 <style type="text/css">
+body{
+margin: 0px;
+padding: 0px;
+display: flex;
+min-height: 100vh;
+flex-direction: column;
+}
+.content{
+flex: 1;
+padding-bottom:15px;
+}
 #footer {
-bottom: 5px;
-position: absolute;
+height: 15px;
+margin-top: -15px;
 color: #999;
 font-family: Helvetica, Arial, sans-serif;
 font-size: 11px;
-}
-#repeat-watermark{
-position:fixed;
-z-index:-1;
-top:0;
-background: #fff;
+clear:both;
 }
 </style>
 </head>
 
 <body>
-    <input type="file" name="imgSrc" id="imgSrc"><br/>
-    <canvas id="imgCanvas" width="100" height="100">
-        Your browser does not support the HTML5 canvas tag.
-    </canvas>
+    <div class="content">
+        <input type="file" name="imgSrc" id="imgSrc"><br />
+    </div>
     <div id="footer">
         Made by <a href="http://bins.top/blog">Jiangsy</a> <a href="http://bins.top/blog">blog</a>
     </div>
@@ -74,31 +79,31 @@ background: #fff;
                 // 加载完成开始绘制
                 img.onload = function () {
                     //准备canvas环境
-                    var cw = document.getElementById("imgCanvas");
-                    cw.width = img.width;
-                    cw.height = img.height;
+                    // var cw = document.getElementById("imgCanvas");
+                    // cw.width = img.width;
+                    // cw.height = img.height;
 
-                    //创建水印canvas
-
-                    //合并图片与水印canvas
-
-                    var ctx = cw.getContext("2d");
+                    // var ctx = cw.getContext("2d");
 
 
                     // 绘制图片
-                    ctx.drawImage(img, 0, 0);
+                    // ctx.drawImage(img, 0, 0);
                     // 绘制水印
+                    // ctx.font = "20px microsoft yahei";
+                    // ctx.fillStyle = "rgba(255,255,255,0.5)";
+                    // ctx.fillText("my mark", 100, 100);
+
+
                     // ctx.font = "20px 黑体";
                     // ctx.rotate(-20*Math.PI/180);
                     // ctx.fillStyle = "rgba(100,100,100,0.1)";
                     // ctx.fillStyle = "rgba(255,255,255,0.5)";
                     // ctx.fillText("465dd92381", -20, 80); 
                     // ctx.rotate('20*Math.PI/180'); //坐标系还原
-                    ctx.font = "20px microsoft yahei";
-                    ctx.fillStyle = "rgba(255,255,255,0.5)";
-                    ctx.fillText("my mark", 100, 100);
 
-                    $('body').watermark({
+
+
+                    $('.content').watermark({
                         texts : ["仅供xx进行xx业务使用，他用无效——"], //水印文字
                         textColor : "#d2d2d2", //文字颜色
                         textFont : '24px 微软雅黑', //字体
