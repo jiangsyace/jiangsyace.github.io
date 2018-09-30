@@ -31,34 +31,21 @@
 
             this.__calcTextSize(this.elem);
             var repeatTimes = Math.ceil(screen.width / settings.txts.length / settings.width);
-            console.info('screen.width:' + screen.width);
-            console.info('settings.width:' + settings.width);
-            console.info('settings.txts.length:' + settings.txts.length);
-            console.info('repeatTimes:' + repeatTimes);
-            console.info('settings.canvasWidth:' + settings.canvasWidth);
-
+            
             settings.canvasWidth = settings.canvasWidth * repeatTimes;
             var extTxts = [];
             while(repeatTimes--) extTxts = extTxts.concat(settings.txts);
             settings.txts = extTxts;
-            console.info('settings.txts:' + JSON.stringify(settings.txts));
 
             var fixH = settings.maxWidth * Math.abs(Math.sin(settings.deg)) + Math.cos(settings.deg) * settings.textHeight;
-            console.info('settings.maxWidth:' + settings.maxWidth);
-            console.info('settings.textHeight:' + settings.textHeight);
-            console.info('fixH:' + fixH);
             if(fixH > settings.height) settings.height = fixH;
-            //创建图片对象
-            var img = new Image();
-            img.src = settings.imgSrc;
-            // 加载完成开始绘制
-            //img.onload = function () {
+            
             var ctx1 = this.__setCanvasStyle(can1, settings.canvasWidth, settings.height);
-            var ctx = this.__setCanvasStyle(canAll, img.width, img.height, true);
-            var infeedRepeatTimes = Math.ceil(img.height / settings.height);
+            var ctx = this.__setCanvasStyle(canAll, settings.imgSrc.width, settings.imgSrc.height, true);
+            var infeedRepeatTimes = Math.ceil(settings.imgSrc.height / settings.height);
             this.__drawText(ctx1, settings.txts);
 
-            ctx.drawImage(img, 0, 0);
+            ctx.drawImage(settings.imgSrc, 0, 0);
             //合并canvas
             var initWidth = 0, initHeight = -settings.height / 2;
             for (let index = 0; index < infeedRepeatTimes; index++) {
@@ -71,11 +58,8 @@
 
             // ctx.drawImage(can1, 0, -settings.height/2, settings.canvasWidth, settings.height);
             // ctx.drawImage(can2, -settings.width, settings.height/2, settings.canvasWidth, settings.height);
-            // var dataURL = canAll.toDataURL("image/png");
 
-            // $(this.elem).css('backgroundImage', "url("+ dataURL +")");
             //this.__destory();
-            
         },
         __createCanvas : function($container){
             var canvas = document.createElement('canvas');
