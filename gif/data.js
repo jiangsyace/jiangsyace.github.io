@@ -1,9 +1,0 @@
-//get_filename.py
-message([
-    {"id":1,"url":"-58871305.gif"},
-    {"id":2,"url":"11831aff8f9113fa1b11def7fca0c401d5e9579bf43ff100c.gif"},
-    {"id":3,"url":"1524118699811.gif"},
-    {"id":4,"url":"2aafe74a18f64bb0.gif"},
-    {"id":5,"url":"964648928.gif"},
-    {"id":6,"url":"jike_366985787515353_pic.gif"}
-]);

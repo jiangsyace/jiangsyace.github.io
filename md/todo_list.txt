@@ -1,6 +1,0 @@
-在线md编辑器
-离线编辑，参考csdn
-
-### 离线写博客
-
-即使用户在没有网络的情况下，也可以通过本编辑器离线写博客（直接在曾经使用过的浏览器中输入[write.blog.csdn.net/mdeditor](http://write.blog.csdn.net/mdeditor)即可。**Markdown编辑器**使用浏览器离线存储将内容保存在本地。
