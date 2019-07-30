@@ -119,7 +119,8 @@ sharing:
 ## => Comments
 ##############################
 comments:
-  provider: gitalk # false (default), "disqus", "gitalk", "valine", "custom"
+  # false (default), "disqus", "gitalk", "valine", "custom"
+  provider: gitalk
 
   ## Disqus
   disqus:
@@ -128,17 +129,22 @@ comments:
   ## Gitalk
   # please refer to https://github.com/gitalk/gitalk for more info.
   gitalk:
-    clientID    : aeb81824e4d65f534a87 # GitHub Application Client ID
-    clientSecret: 7d91972773901feebfa339c365facd48b543d881 # GitHub Application Client Secret
-    repository  : https://github.com/jiangsyace/blog/ # GitHub repo
-    owner       : jiangsyace # GitHub repo owner
-    admin: jiangsyace # GitHub repo owner and collaborators, only these guys can initialize GitHub issues, IT IS A LIST.
+     # GitHub Application Client ID
+    clientID    : aeb81824e4d65f534a87
+     # GitHub Application Client Secret
+    clientSecret: 7d91972773901feebfa339c365facd48b543d881
+     # GitHub repo
+    repository  : https://github.com/jiangsyace/jiangsyace.github.io
+     # GitHub repo owner
+    owner       : jiangsyace
+     # GitHub repo owner and collaborators, only these guys can initialize GitHub issues, IT IS A LIST.
+    admin: jiangsyace
 
   ## Valine
   # please refer to https://valine.js.org/en/ for more info.
   valine:
-    app_id      : # LeanCloud App id
-    app_key     : # LeanCloud App key
+    app_id      : VrQ7X2BW2IB0gWUnsbNPfizR-gzGzoHsz # LeanCloud App id
+    app_key     : KRQhTz7zib94HdVdLE1GIWQ8 # LeanCloud App key
     placeholder : # Prompt information
     visitor     : # false (default)
     meta        : # "[nick, mail, link]" (default) nickname, E-mail, Personal-site
@@ -147,19 +153,24 @@ comments:
 ## => Pageview
 ##############################
 pageview:
-  provider: leancloud # false (default), "leancloud", "custom"
+  # false (default), "leancloud", "custom"
+  provider: leancloud
 
   ## Leancloud
   leancloud:
-    app_id    : VrQ7X2BW2IB0gWUnsbNPfizR-gzGzoHsz # LeanCloud App id
-    app_key   : KRQhTz7zib94HdVdLE1GIWQ8 # LeanCloud App key
-    app_class : Counter # LeanCloud App class
+     # LeanCloud App id
+    app_id    : VrQ7X2BW2IB0gWUnsbNPfizR-gzGzoHsz
+     # LeanCloud App key
+    app_key   : KRQhTz7zib94HdVdLE1GIWQ8
+     # LeanCloud App class
+    app_class : Counter
 
 
 ## => Search
 ##############################
 search:
-  provider: default # "default" (default), false, "google", "custom"
+   # "default" (default), false, "google", "custom"
+  provider: default
 
   ## Google Custom Search Engine
   google:
@@ -169,13 +180,14 @@ search:
 ## => Analytics
 ##############################
 analytics:
-  provider: false # false (default), "google", "custom"
+  provider: baidu # false (default), "google", "custom"
 
   ## Google Analytics
   google:
     tracking_id : # Google Analytics id for the site
     anonymize_ip: false # Anonymize IP tracking for Analytics
-
+  ## baidu Analytics
+  baidu: e5709fd4c97c6d1a95b43cd3c4d0ae73
 
 ## => Build
 ##############################
