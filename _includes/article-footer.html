@@ -38,6 +38,11 @@
     {%- include article/footer/author-profile.html author=_author -%}
   {%- endif -%}
 
+  <!-- 移动comments -->
+  {%- if _comment != false -%}
+  <section class="page__comments d-print-none">{%- include comments.html -%}</section>
+  {%- endif -%}
+
   {%- if _show_subscribe -%}
     <div class="article__subscribe">{%- include article/footer/subscribe.html -%}</div>
   {%- endif -%}

@@ -134,7 +134,7 @@ comments:
      # GitHub Application Client Secret
     clientSecret: 7d91972773901feebfa339c365facd48b543d881
      # GitHub repo
-    repository  : https://github.com/jiangsyace/jiangsyace.github.io
+    repository  : jiangsyace.github.io
      # GitHub repo owner
     owner       : jiangsyace
      # GitHub repo owner and collaborators, only these guys can initialize GitHub issues, IT IS A LIST.
@@ -220,7 +220,7 @@ defaults:
     values:
       layout: article
       sharing: true
-      license: true
+      license: false
       aside:
         toc: true
       show_edit_on_github: true
