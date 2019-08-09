@@ -15,7 +15,7 @@ Tmux是一个优秀的终端复用软件，类似GNU Screen，但来自于OpenBS
 tmux 应用程序的名称来源于终端（terminal）复用器（muxer）或多路复用器（multiplexer）。tmux中有3种概念，会话(session)，窗口(window)，窗格(pane)。一个会话可以包含多个窗口，一个窗口可以被分割成多个窗格。
 
 下面是三个元素在tmux中的具体展现：
-![]({{site.upload | relative_url}}/6941baebjw1et4uosbtuhj21kw0qvqf1.jpg)
+![](/assets/upload/6941baebjw1et4uosbtuhj21kw0qvqf1.jpg)
 
 tmux的github地址：[https://github.com/tmux/tmux](https://github.com/tmux/tmux)  
 tmux官网：[http://tmux.github.io/](http://tmux.github.io/)

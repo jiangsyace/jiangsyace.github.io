@@ -255,7 +255,7 @@ Java 8中Lambda及其等效方法引用的例子：
 **如何构建方法引用？**   
 1. 指向静态方法的方法引用（例如Integer的parseInt方法，写作`Integer::parseInt`）。
 2. 指向任意类型实例方法的方法引用（例如String 的 length 方法，写作 `String::length`）。 
-3. 指向现有对象的实例方法的方法引用（假设有一个局部变量expensiveTransaction用于存放Transaction类型的对象，它支持实例方法getValue，那么就可以写`expensive-Transaction::getValue`）。 
+3. 指向现有对象的实例方法的方法引用（假设有一个局部变量expensiveTransaction用于存放Transaction类型的对象，它支持实例方法getValue，那么就可以写`expensiveTransaction::getValue`）。 
 
 ### 构造函数引用
 

@@ -13,7 +13,7 @@ Shiro运行原理与Spring集成
 <!-- more -->
 
 1. 提供的功能
-![]({{site.upload | relative_url}}/2018-08-06/index.png)
+![](/assets/upload/2018-08-06/index.png)
 
 Authentication：身份认证/登录，验证用户是不是拥有相应的身份；
 
@@ -39,7 +39,7 @@ Remember Me：记住我，这个是非常常见的功能，即一次登录后，
 
 从大的角度来看，Shiro有三个主要的概念：Subject，SecurityManager，Realms，下面这幅图可以看到这些原件之间的交互。
 
-![]({{site.upload | relative_url}}/2018-08-06/426671-5458508e59ae958a.png)
+![](/assets/upload/2018-08-06/426671-5458508e59ae958a.png)
 
 Subject：主体，代表了当前参与应用安全部分的主角，可以是用户，可以是第三方服务，可以是cron 任务，或者任何东西。主要指一个正在与当前软件交互的东西。
 所有Subject都需要SecurityManager，当你与Subject进行交互，这些交互行为实际上被转换为与SecurityManager的交互
@@ -52,7 +52,7 @@ Shiro提供了一些可以直接使用的Realms，如果默认的Realms不能满
 
 更细节的架构:
 
-![]({{site.upload | relative_url}}/2018-08-06/426671-d2c043d97b735c9e.png)
+![](/assets/upload/2018-08-06/426671-d2c043d97b735c9e.png)
 
 
 3. 与Spring MVC集成  
