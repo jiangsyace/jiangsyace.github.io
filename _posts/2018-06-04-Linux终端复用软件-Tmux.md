@@ -157,6 +157,13 @@ setw -g mouse-select-window on
 setw -g mode-mouse on
 ```
 
+复制 按住`shift`键,然后拖动鼠标复制要选择的内容，然后按下`shift+ctrl+c`,复制到系统剪贴板  
+粘贴 按下`shift+ctrl+v` 粘贴系统剪贴板中的内容到tmux中  
+需要注意的是:  
+`shift+ctrl+v`是在终端设置的粘贴快捷键  
+`shift+ctrl+c`是在终端设置的复制快捷键  
+需要根据你的终端配置的复制粘贴快捷键来进行操作  
+
 ### 脚本
 
 脚本可以让我们构造自己的tmux布局模版
