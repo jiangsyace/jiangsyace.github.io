@@ -7,7 +7,7 @@ tags:
 - java
 ---
 
-Streams 的背景，以及 Java 8 中的使用详解
+Stream 的背景，以及 Java 8 中的使用总结
 
 <!-- more -->
 
@@ -23,7 +23,6 @@ Stream是数据渠道，用于操作数据源（集合，数组等）所生成�
 4. Stream 操作时延迟执行得，这意味着它们会等到需要结果时才执行。（延迟加载）
 
 
-
 Stream 不是集合元素，它不是数据结构并不保存数据，它是有关算法和计算的，它更像一个高级版本的 Iterator。原始版本的 Iterator，用户只能显式地一个一个遍历元素并对其执行某些操作；高级版本的 Stream，用户只要给出需要对其包含的元素执行什么操作，比如 “过滤掉长度大于 10 的字符串”、“获取每个字符串的首字母”等，Stream 会隐式地在内部进行遍历，做出相应的数据转换。
 
 Stream 就如同一个迭代器（Iterator），单向，不可往复，数据只能遍历一次，遍历过一次后即用尽了，就好比流水从面前流过，一去不复返。
@@ -34,7 +33,6 @@ Stream 就如同一个迭代器（Iterator），单向，不可往复，数据�
 
 Stream 作为 Java 8 的一大亮点，它与 java.io 包里的 InputStream 和 OutputStream 是完全不同的概念。它也不同于 StAX 对 XML 解析的 Stream，也不是 Amazon Kinesis 对大数据实时处理的 Stream。Java 8 中的 Stream 是对集合（Collection）对象功能的增强，它专注于对集合对象进行各种非常便利、高效的聚合操作（aggregate operation），或者大批量数据操作 (bulk data operation)。Stream API 借助于同样新出现的 Lambda 表达式，极大的提高编程效率和程序可读性。同时它提供串行和并行两种模式进行汇聚操作，并发模式能够充分利用多核处理器的优势，使用 fork/join 并行方式来拆分任务和加速处理过程。通常编写并行代码很难而且容易出错, 但使用 Stream API 无需编写一行多线程的代码，就可以很方便地写出高性能的并发程序。所以说，Java 8 中首次出现的 java.util.stream 是一个函数式语言+多核时代综合影响的产物。
 
-### 什么是聚合操作
 
 ## 流的构成
 
@@ -72,14 +70,35 @@ stream = list.stream();
 
 
 
-## 流操作
+## 流的操作
 
-### 中间操作
+当把一个数据结构包装成 Stream 后，就可以对里面的元素进行各类操作了。常见的操作可以归类如下。
 
-### 终端操作 
+
+### 中间操作（Intermediate）
+
+一个流可以后面跟随零个或多个 intermediate 操作。其目的主要是打开流，做出某种程度的数据映射/过滤，然后返回一个新的流，交给下一个操作使用。这类操作都是惰性化的（lazy），就是说，仅仅调用到这类方法，并没有真正开始流的遍历。
+  
+```
+map (mapToInt, flatMap 等), filter, distinct, sorted, peek, limit, skip, parallel, sequential, unordered
+```
+
+### 终端操作（Terminal）
+
+一个流只能有一个 terminal 操作，当这个操作执行后，流就被使用“光”了，无法再被操作。所以这必定是流的最后一个操作。Terminal 操作的执行，才会真正开始流的遍历，并且会生成一个结果，或者一个 side effect。
+
+```
+forEach, forEachOrdered, toArray, reduce, collect, min, max, count, anyMatch, allMatch, noneMatch, findFirst, findAny, iterator
+```
+
+这两种操作中还包括另外一种操作：短路操作（Short-circuiting），目的是将无限的流，转为有限的流。如果想终结无限流操作，用短路是必须的，但并不足够，可能还需要其他的流操作。  
+由无限流转成有限流的中间操作有：`limit`
+由无限流转成有限流的终结操作有：`findAny, findFirst, anyMatch, allMatch, noneMatch` 
 
 
 ## 使用流
+
+简单说，对 Stream 的使用就是实现一个 filter-map-reduce 过程，产生一个最终结果，或者导致一个副作用（side effect）。
 
 ### 筛选和切片
 
@@ -92,23 +111,27 @@ stream = list.stream();
 #### 跳过元素
 
 
-### 映射
+
+### 转换流
 
 #### 对流中每一个元素应用函数 
 
-
 #### 流的扁平化 
+
+
+
 
 ### 查找和匹配
 
 #### 检查谓词是否至少匹配一个元素
-
 
 #### 检查谓词是否匹配所有元素 
 
 #### 查找元素 
 
 #### 查找第一个元素 
+
+
 
 ### 归约
  
@@ -118,7 +141,11 @@ stream = list.stream();
 
 
 
+## 使用示例
 
+```
+
+```
 
 
 
