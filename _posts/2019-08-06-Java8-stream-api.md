@@ -47,6 +47,8 @@ Stream.iterate(0, n -> n + 2).limit(10).forEach(System.out::println);
 // 斐波纳契元组序列
 Stream.iterate(new int[] { 0, 1 }, t -> new int[] { t[1], t[0] + t[1] }).limit(20)
     .forEach(t -> System.out.println("(" + t[0] + "," + t[1] + ")"));
+// 创建随机数
+Stream.generate(Math::random).limit(5).forEach(System.out::println);
 
 // 创建一个空流
 Stream<String> emptyStream = Stream.empty();
@@ -61,6 +63,15 @@ StreamSupport.stream(Spliterator<T> spliterator, boolean parallel)
 
 ### 数值流
 如同Java中内置的函数式接口一样，流也有相应的针对基本数据类型的接口：IntStream、LongStream 和 DoubleStream，它们分别将流中的元素特化为int、long和double，从而避免了暗含的装箱成本。
+
+#### 数值流方法
+```
+IntStream.of(new int[]{1, 2, 3}).forEach(System.out::println);
+IntStream.range(1, 3).forEach(System.out::println);
+IntStream.rangeClosed(1, 3).forEach(System.out::println);
+personList.stream().mapToInt(Person::getAge);
+
+```
 
 #### 映射到数值流
 
@@ -135,48 +146,76 @@ Stream<Integer> stream = intStream.boxed();
 
 ### 筛选和切片
 
-#### 用谓词筛选
+Stream接口的filter方法接受一个谓词（predicate）作为参数，并返回一个包括所有符合谓词的元素的流。
 
-#### 筛选各异的元素
+```
+// 筛选偶数
+Integer[] numbers = {1, 2, 2, 3, 4, 5, 6};
+Stream.of(numbers).filter(n -> n % 2 == 0).forEach(System.out::println);
+// 筛选各异的元素
+Stream.of(numbers).filter(n -> n % 2 == 0).distinct().forEach(System.out::println);
+// 截短流
+Stream.of(numbers).filter(n -> n % 2 == 0).limit(3).forEach(System.out::println);
+// 跳过元素
+Stream.of(numbers).filter(n -> n % 2 == 0).skip(2).forEach(System.out::println);
+```
 
-#### 截短流
+### 映射流
 
-#### 跳过元素
+流支持map方法，它会接受一个函数作为参数。这个函数会被应用到每个元素上，并将其映射成一个新的元素（并不修改原来的元素）。
+```
+// 对流中每一个元素应用函数
+List<String> peopleNames = personList.stream().map(Person::getName).collect(Collectors.toList());
 
-
-### 转换流
-
-#### 对流中每一个元素应用函数
-
-#### 流的扁平化 
-
-### 数值流
-
-#### 数值流方法
-
-#### 数值范围 
-
-#### 数值流应用：勾股数 
-
+// 流的扁平化,将多个流合并起来，即扁平化为一个流
+List<String> uniqueCharacters = words.stream()
+                                .map(w -> w.split("")) // 将每个单词转换为由其字母构成的数组 
+                                .flatMap(Arrays::stream) // 将各个生成流扁平化为单个流 
+                                .distinct().collect(Collectors.toList());
+```
 
 ### 查找和匹配
 
-#### 检查谓词是否至少匹配一个元素
+```
+// 检查谓词是否至少匹配一个元素
+boolean isThereAnyChild = persons.stream().anyMatch(p -> p.getAge() < 12);
+// 检查谓词是否匹配所有元素 
+boolean isAllAdult = personList.stream().allMatch(p -> p.getAge() > 18);
+// 查找元素 
+Optional<Person> person = personList.stream().filter(p -> p.getAge() > 18).findAny();
+// 查找第一个元素 
+Optional<Person> person = personList.stream().filter(p -> p.getAge() > 18).findFirst();
+```
 
-#### 检查谓词是否匹配所有元素 
+Optional<T>类（java.util.Optional）是一个容器类，代表一个值存在或不存在。Optional提供了方法可以显示地检查值是否存在。
 
-#### 查找元素 
+```
+personList.stream().filter(p -> p.getAge() > 18).findAny().ifPresent(p -> System.out.println(p.getName()));
+```
 
-#### 查找第一个元素 
-
-
+> 何时使用findFirst和findAny？   
+> 答案是并行。找到第一个元素在并行上限制更多。如果你不关心返回的元素是哪个，请使用findAny，因为它在使用并行流时限制较少。 
 
 ### 归约
- 
-#### 元素求和 
 
-#### 最大值和最小值 
+reduce接受两个参数：  
++ 一个初始值（可选）
++ 一个BinaryOperator<T>来将两个元素结合起来产生一个新值，
 
+```
+// 元素求和
+int sum = Stream.of(numbers).reduce(0, (a, b) -> a + b);
+
+// 最大值和最小值 
+Optional<Integer> max = Stream.of(numbers).reduce(Integer::max);
+
+// 用map和reduce计算流中元素的数量
+int count = Stream.of(numbers).map(n -> 1) // 把流中每个元素都映射成数字1
+                              .reduce(0, (a, b) -> a + b); // 用reduce求和
+// 内置的方法也可以用来计算流中元素的个数
+long count = menu.stream().count(); 
+```
+> map和reduce的连接通常称为map-reduce模式，因Google用它来进行网络搜索而出名，因为它很容易并行化。
 
 ### 并行
 
@@ -248,7 +287,7 @@ sorted()方法可以将流转换成encounter order的，unordered可以将流转
 
 注意，这个方法并不是对元素进行排序或者打散，而是返回一个是否encounter order的流。
 
-> https://stackoverflow.com/questions/21350195/stream-ordered-unordered-problems
+> https://stackoverflow.com/questions/21350195/stream-ordered-unordered-problems  
 > If a stream is ordered, repeated execution of identical stream pipelines on an identical source will produce an identical result; if it is not ordered, repeated execution might produce different results.
 
 除此之外，一个操作可能会影响流的有序,比如map方法，它会用不同的值甚至类型替换流中的元素，所以输入元素的有序性已经变得没有意义了，但是对于filter方法来说，它只是丢弃掉一些值而已，输入元素的有序性还是保障的。
@@ -277,13 +316,11 @@ public static …… 	toMap(……)
 public static <T> Collector<T,?,Set<T>> 	toSet()
 ```
 
-## 使用示例
 
-
-
+---
 
 ## 相关主题
 
-https://docs.oracle.com/javase/8/docs/api/java/util/stream/package-summary.html
+[https://docs.oracle.com/javase/8/docs/api/java/util/stream/package-summary.html](https://docs.oracle.com/javase/8/docs/api/java/util/stream/package-summary.html)
 
-https://www.ibm.com/developerworks/cn/java/j-lo-java8streamapi/
+[https://www.ibm.com/developerworks/cn/java/j-lo-java8streamapi/](https://www.ibm.com/developerworks/cn/java/j-lo-java8streamapi/)

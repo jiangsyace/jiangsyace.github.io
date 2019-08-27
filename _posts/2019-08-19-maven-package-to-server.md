@@ -9,7 +9,9 @@ tags:
 
 每次打包部署测试，流程都一样，maven打包，打开文件管理器找到war包，拖到测试服务器，切换到命令行界面，运行部署脚本。每次部署都要做这样重复的步骤，终于有一天，脑子突然开窍，如同被一道雷劈过，脑中浮现一贯奉行的真理：一切重复的操作都是可以通过程序自动完成的。  
 maven都能打包上传到nexus仓库，为啥不能上传到测试服务器呢。
+
 <!-- more -->
+
 整理关键字一搜索，发现maven是可以通过一个插件来查看和传输资源的：[wagon-maven-plugin](http://www.mojohaus.org/wagon-maven-plugin/)  
 
 Wagon 插件可以实现以下功能：
@@ -112,6 +114,7 @@ Wagon 插件可以实现以下功能：
 ```
 
 + 如果觉得运行脚本太长，还可以配置配置execution，在运行package打包的同时运行upload-single和sshexec，如下：  
+
 ```
 <plugin>
     <groupId>org.codehaus.mojo</groupId>
