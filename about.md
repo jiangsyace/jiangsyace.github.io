@@ -10,7 +10,7 @@ My Name is Jiang Shenyun (You can also call me Ethan Jiang), I am a Java develop
 ## Skills
 
 - Java, JavaScript, Python
-- Spring, Mybatis, Dubbo
+- SpringBoot, Mybatis, Dubbo
 - MySQL, Redis
 
 <!--more-->
