@@ -47,8 +47,7 @@ Synchronized有以下三种使用方式：
 
 流程图如下：
 
-![]({{site.upload | relative_url}}/2019-11-14/5d313f638492c49210.jpg)
-
+![](/assets/upload/2019-11-14/5d313f638492c49210.jpg)
 
 通过一段代码来演示:
 ```
