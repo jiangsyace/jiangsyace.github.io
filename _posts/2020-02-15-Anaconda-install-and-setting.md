@@ -1,5 +1,5 @@
 ---
-title: 2020-02-15-Anaconda环境管理
+title: Anaconda环境管理
 date: 2020-02-15
 categories:
 - tech
