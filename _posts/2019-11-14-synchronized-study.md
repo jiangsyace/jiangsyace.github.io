@@ -149,6 +149,7 @@ synchronized 很多都称之为重量锁，JDK1.6 中对 synchronized 进行了�
 ## 参考
 [Synchronized与ReentrantLock区别总结（简单粗暴，一目了然）](https://blog.csdn.net/zxd8080666/article/details/83214089
 )
+
 [Synchronized的基本知识、实现原理以及其与ReentrantLock的区别](https://www.cnblogs.com/jlutiger/p/10548291.html)
 
 [synchronized 关键字原理](https://crossoverjie.top/JCSprout/#/thread/Synchronize)
