@@ -221,6 +221,6 @@ tags:
     javax.lang.model.type.TypeMirror 和javax.lang.model.type.TypeVisitor 
 
 ## 参考
-https://coolshell.cn/articles/3320.html
+[https://coolshell.cn/articles/3320.html](https://coolshell.cn/articles/3320.html)
 
-http://stackoverflow.com/questions/1673841/examples-of-gof-design-patterns
+[http://stackoverflow.com/questions/1673841/examples-of-gof-design-patterns](http://stackoverflow.com/questions/1673841/examples-of-gof-design-patterns)
