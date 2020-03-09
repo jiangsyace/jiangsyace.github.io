@@ -5,16 +5,23 @@ categories:
 - tech
 ---
 
-Intellij IDEA常用配置
+Intellij IDEA常用配置及快捷键
 
 <!-- more -->
 
 ## 显示实体类的属性注释
-Settings -> Editor -> Show quick documentation on mouse move
+Settings -> Editor -> General -> Show quick documentation on mouse move
+
+## 禁止检测更新
+Settings -> Appearance & Behavior -> System Settings -> Updates
+
+## 常用快捷键
++ Shift + Shift 可在一个弹出框中搜索任何东西，包括类、资源、配置项、方法等等。
++ Ctrl+Tab 切换文件
 
 ## 设置IDEA快捷键为Eclipse风格
 
-- 点击File->Settings->Keymap，选择快捷键风格为Eclipse
+- 点击File -> Settings -> Keymap，选择快捷键风格为Eclipse
 - 按如下表格中的英文描述进行搜索，并改为相应快捷键
 
 | Eclipse            | IDEA               | 英文描述                        | 中文描述                            |
