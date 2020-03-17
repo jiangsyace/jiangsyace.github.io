@@ -225,17 +225,17 @@ public class Client {
 
 ```
 public class PrototypeClass implements Cloneable {
-	//覆写父类Object方法
-	@Override
-	public PrototypeClass clone() {
-		PrototypeClass prototypeClass = null;
-		try {
-			prototypeClass = (PrototypeClass)super.clone();
-		} catch (CloneNotSupportedException e) {
-			//异常处理
-		}
-		return prototypeClass;
-	}
+    //覆写父类Object方法
+    @Override
+    public PrototypeClass clone() {
+        PrototypeClass prototypeClass = null;
+        try {
+            prototypeClass = (PrototypeClass)super.clone();
+        } catch (CloneNotSupportedException e) {
+            //异常处理
+        }
+        return prototypeClass;
+    }
 }
 ```
 
@@ -256,7 +256,7 @@ public Object deepClone() throws IOException, ClassNotFoundException {
 
 ## 原型模式的优缺点
 + 优点
-	+ 性能优良，基于内存的二进制流的拷贝，要比直接new一个对象的性能好很多，特别是在一个循环体内产生大量的对象时，原型模式能更好地体现其优点。
+    + 性能优良，基于内存的二进制流的拷贝，要比直接new一个对象的性能好很多，特别是在一个循环体内产生大量的对象时，原型模式能更好地体现其优点。
     + 逃避构造函数的约束，直接在内存中拷贝，构造函数不会执行，这既是它的优点也是缺点。
 + 缺点
-	+ 原型模式最主要的缺点是每一个类都必须配备一个克隆方法。配备克隆方法需要对类的功能进行通盘考虑，这对于全新的类来说不是很难，而对于已经有的类不一定很容易，特别是当一个类引用不支持序列化的间接对象，或者引用含有循环结构的时候。
+    + 原型模式最主要的缺点是每一个类都必须配备一个克隆方法。配备克隆方法需要对类的功能进行通盘考虑，这对于全新的类来说不是很难，而对于已经有的类不一定很容易，特别是当一个类引用不支持序列化的间接对象，或者引用含有循环结构的时候。

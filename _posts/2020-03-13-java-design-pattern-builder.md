@@ -29,52 +29,52 @@ tags:
 产品类
 ```
 public class Product {
-	public void doSomething(){
-		//独立业务处理
-	}
+    public void doSomething() {
+        //独立业务处理
+    }
 }
 ```
 
 抽象建造者
 ```
 public abstract class Builder {
-	//设置产品的不同部分，以获得不同的产品
-	public abstract void setPart();
-	//建造产品
-	public abstract Product buildProduct();
+    //设置产品的不同部分，以获得不同的产品
+    public abstract void setPart();
+    //建造产品
+    public abstract Product buildProduct();
 }
 ```
 
 具体建造者
 ```
 public class ConcreteProduct extends Builder {
-	private Product product = new Product();
-	//设置产品零件
-	public void setPart(){
-		/*
-		 * 产品类内的逻辑处理
-		 */
-	}
-	
-	//组建一个产品
-	public Product buildProduct() {
-		return product;
-	}
+    private Product product = new Product();
+    //设置产品零件
+    public void setPart(){
+        /*
+         * 产品类内的逻辑处理
+         */
+    }
+    
+    //组建一个产品
+    public Product buildProduct() {
+        return product;
+    }
 }
 ```
 
 导演类
 ```
 public class Director {
-	private Builder builder = new ConcreteProduct();
-	//构建不同的产品
-	public Product getAProduct() {
-		builder.setPart();  
-		/*
-		 * 设置不同的零件，产生不同的产品
-		 */
-		return builder.buildProduct();
-	}
+    private Builder builder = new ConcreteProduct();
+    //构建不同的产品
+    public Product getAProduct() {
+        builder.setPart();
+        /*
+         * 设置不同的零件，产生不同的产品
+         */
+        return builder.buildProduct();
+    }
 }
 ```
 

@@ -31,25 +31,25 @@ tags:
 抽象享元角色，注意划分外部状态和内部状态，否则可能会引起线程安全问题。
 ```
 public abstract class Flyweight {
-	//内部状态
-	private String intrinsic;
-	//外部状态
-	protected final String extrinsic;
-	//要求享元角色必须接受外部状态
-	public Flyweight(String _extrinsic) {
-		this.extrinsic = _extrinsic;
-	}
-	
-	//定义业务操作
-	public abstract void operate();
-	
-	//内部状态的getter/setter
-	public String getIntrinsic() {
-		return intrinsic;
-	}
-	public void setIntrinsic(String intrinsic) {
-		this.intrinsic = intrinsic;
-	}	
+    //内部状态
+    private String intrinsic;
+    //外部状态
+    protected final String extrinsic;
+    //要求享元角色必须接受外部状态
+    public Flyweight(String _extrinsic) {
+        this.extrinsic = _extrinsic;
+    }
+    
+    //定义业务操作
+    public abstract void operate();
+    
+    //内部状态的getter/setter
+    public String getIntrinsic() {
+        return intrinsic;
+    }
+    public void setIntrinsic(String intrinsic) {
+        this.intrinsic = intrinsic;
+    }    
 
 }
 
@@ -58,26 +58,26 @@ public abstract class Flyweight {
 具体享元角色
 ```
 public class ConcreteFlyweight1 extends Flyweight {
-	//接受外部状态
-	public ConcreteFlyweight1(String _extrinsic){
-		super(_extrinsic);
-	}
-	
-	//根据外部状态进行逻辑处理
-	public void operate(){
-		//业务逻辑
-	}
+    //接受外部状态
+    public ConcreteFlyweight1(String _extrinsic){
+        super(_extrinsic);
+    }
+    
+    //根据外部状态进行逻辑处理
+    public void operate(){
+        //业务逻辑
+    }
 }
 public class ConcreteFlyweight2 extends Flyweight {
-	//接受外部状态
-	public ConcreteFlyweight2(String _extrinsic) {
-		super(_extrinsic);
-	}
-	
-	//根据外部状态进行逻辑处理
-	public void operate() {
-		//业务逻辑
-	}
+    //接受外部状态
+    public ConcreteFlyweight2(String _extrinsic) {
+        super(_extrinsic);
+    }
+    
+    //根据外部状态进行逻辑处理
+    public void operate() {
+        //业务逻辑
+    }
 }
 
 ```
@@ -86,24 +86,24 @@ public class ConcreteFlyweight2 extends Flyweight {
 享元工厂角色，这些类必须有一个工厂对象加以控制
 ```
 public class FlyweightFactory {
-	//定义一个池容器
-	private static HashMap<String, Flyweight> pool= new HashMap<String, Flyweight>();
-	
-	//享元工厂
-	public static Flyweight getFlyweight(String extrinsic) {
-		//需要返回的对象
-		Flyweight flyweight = null;
-		//在池中没有改对象
-		if(pool.containsKey(extrinsic)) {
-			flyweight = pool.get(extrinsic);
-		} else {
-			//根据外部状态创建享元对象
-			flyweight = new ConcreteFlyweight1(extrinsic);
-			//放置到池中
-			pool.put(extrinsic, flyweight);
-		}
-		return flyweight;
-	}
+    //定义一个池容器
+    private static HashMap<String, Flyweight> pool= new HashMap<String, Flyweight>();
+    
+    //享元工厂
+    public static Flyweight getFlyweight(String extrinsic) {
+        //需要返回的对象
+        Flyweight flyweight = null;
+        //在池中没有改对象
+        if(pool.containsKey(extrinsic)) {
+            flyweight = pool.get(extrinsic);
+        } else {
+            //根据外部状态创建享元对象
+            flyweight = new ConcreteFlyweight1(extrinsic);
+            //放置到池中
+            pool.put(extrinsic, flyweight);
+        }
+        return flyweight;
+    }
 }
 ```
 

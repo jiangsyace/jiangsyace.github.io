@@ -29,7 +29,7 @@ tags:
 抽象产品角色
 ```
 public abstract class Product {
-	public abstract void doSomething();
+    public abstract void doSomething();
 
 }
 ```
@@ -37,15 +37,15 @@ public abstract class Product {
 具体产品角色
 ```
 public class ConcreteProduct1 extends Product {
-	public void doSomething() {
-		//逻辑处理
-	}
+    public void doSomething() {
+        //逻辑处理
+    }
 }
 
 public class ConcreteProduct2 extends Product {
-	public void doSomething() {
-		//逻辑处理
-	}
+    public void doSomething() {
+        //逻辑处理
+    }
 }
 
 ```
@@ -53,25 +53,25 @@ public class ConcreteProduct2 extends Product {
 工厂角色
 ```
 public class Factory {
-	private static final Map<String,Product> prMap = new HashMap();
-	
-	public static synchronized Product createProduct(String type) throws Exception {
-		Product product = null;
-		
-		//如果Map中已经有这个对象
-		if(prMap.containsKey(type)) {
-			product = prMap.get(type);
-		} else {
-			if(type.equals("Product1")) {
-				product = new ConcreteProduct1();
-			} else {
-				product = new ConcreteProduct2();
-			}
-			//同时把对象放到缓存容器中
-			prMap.put(type, product);
-		}
-		return product;
-	}
+    private static final Map<String,Product> prMap = new HashMap();
+    
+    public static synchronized Product createProduct(String type) throws Exception {
+        Product product = null;
+        
+        //如果Map中已经有这个对象
+        if(prMap.containsKey(type)) {
+            product = prMap.get(type);
+        } else {
+            if(type.equals("Product1")) {
+                product = new ConcreteProduct1();
+            } else {
+                product = new ConcreteProduct2();
+            }
+            //同时把对象放到缓存容器中
+            prMap.put(type, product);
+        }
+        return product;
+    }
 }
 ```
 
@@ -94,12 +94,12 @@ public class Factory {
 抽象产品角色
 ```
 public abstract class Product {
-	//产品类的公共方法
-	public void method1(){
-		//业务逻辑处理
-	}
-	//抽象方法1
-	public abstract void method2();	
+    //产品类的公共方法
+    public void method1(){
+        //业务逻辑处理
+    }
+    //抽象方法1
+    public abstract void method2();
 }
 
 ```
@@ -107,15 +107,15 @@ public abstract class Product {
 具体产品角色
 ```
 public class ConcreteProduct1 extends Product {
-	public void method2() {
-		//业务逻辑处理
-	}
+    public void method2() {
+        //业务逻辑处理
+    }
 }
 
 public class ConcreteProduct2 extends Product {
-	public void method2() {
-		//业务逻辑处理
-	}
+    public void method2() {
+        //业务逻辑处理
+    }
 }
 
 ```
@@ -123,11 +123,11 @@ public class ConcreteProduct2 extends Product {
 抽象工厂角色
 ```
 public abstract class Factory {
-	/*
-	 * 创建一个产品对象,其输入参数类型可以自行设置
-	 * 通常为String、Enum、Class等，当然也可以为空
-	 */
-	public abstract <T extends Product> T createProduct(Class<T> c);
+    /*
+     * 创建一个产品对象,其输入参数类型可以自行设置
+     * 通常为String、Enum、Class等，当然也可以为空
+     */
+    public abstract <T extends Product> T createProduct(Class<T> c);
 }
 
 ```
@@ -135,26 +135,26 @@ public abstract class Factory {
 具体工厂角色
 ```
 public class ConcreteFactory extends Factory {
-	
-	public <T extends Product> T createProduct(Class<T> c) {
-		Product product = null;
-		try {
-			 product = (Product)Class.forName(c.getName()).newInstance();
-		} catch (Exception e) {
-			//异常处理
-		}		
-		return (T)product;		
-	}
+    
+    public <T extends Product> T createProduct(Class<T> c) {
+        Product product = null;
+        try {
+             product = (Product)Class.forName(c.getName()).newInstance();
+        } catch (Exception e) {
+            //异常处理
+        }
+        return (T)product;
+    }
 }
 ```
 
 调用过程
 ```
 public class Client {
-	public static void main(String[] args) {
-		Factory creator = new ConcreteFactory();
-		Product product = creator.createProduct(ConcreteProduct1.class);
-	}
+    public static void main(String[] args) {
+        Factory creator = new ConcreteFactory();
+        Product product = creator.createProduct(ConcreteProduct1.class);
+    }
 }
 ```
 
@@ -190,11 +190,11 @@ public class Client {
 抽象工厂类
 ```
 public abstract class AbstractCreator {
-	//创建A产品家族
-	public abstract AbstractProductA createProductA();
-	
-	//创建B产品家族
-	public abstract AbstractProductB createProductB();
+    //创建A产品家族
+    public abstract AbstractProductA createProductA();
+    
+    //创建B产品家族
+    public abstract AbstractProductB createProductB();
 }
 
 ```
@@ -202,26 +202,26 @@ public abstract class AbstractCreator {
 工厂实现类
 ```
 public class Creator1 extends AbstractCreator {
-	//只生产产品等级为1的A产品
-	public AbstractProductA createProductA() {	
-		return new ProductA1();
-	}
-	//只生产铲平等级为1的B产品
-	public AbstractProductB createProductB() {
-		return new ProductB1();
-	}
+    //只生产产品等级为1的A产品
+    public AbstractProductA createProductA() {
+        return new ProductA1();
+    }
+    //只生产铲平等级为1的B产品
+    public AbstractProductB createProductB() {
+        return new ProductB1();
+    }
 }
 
 public class Creator2 extends AbstractCreator {
-	//只生产产品等级为2的A产品
-	public AbstractProductA createProductA() {	
-		return new ProductA2();
-	}
+    //只生产产品等级为2的A产品
+    public AbstractProductA createProductA() {
+        return new ProductA2();
+    }
 
-	//只生产铲平等级为2的B产品
-	public AbstractProductB createProductB() {
-		return new ProductB2();
-	}
+    //只生产铲平等级为2的B产品
+    public AbstractProductB createProductB() {
+        return new ProductB2();
+    }
 }
 
 ```
@@ -229,21 +229,21 @@ public class Creator2 extends AbstractCreator {
 抽象产品类
 ```
 public abstract class AbstractProductA {
-	//每个产品共有的方法
-	public void shareMethod(){
-		
-	}
-	//每个产品相同方法，不同实现
-	public abstract void doSomething();
+    //每个产品共有的方法
+    public void shareMethod(){
+        
+    }
+    //每个产品相同方法，不同实现
+    public abstract void doSomething();
 }
 
 public abstract class AbstractProductB {
-	//每个产品共有的方法
-	public void shareMethod(){
-		
-	}
-	//每个产品相同方法，不同实现
-	public abstract void doSomething();
+    //每个产品共有的方法
+    public void shareMethod(){
+        
+    }
+    //每个产品相同方法，不同实现
+    public abstract void doSomething();
 }
 
 ```
@@ -251,29 +251,29 @@ public abstract class AbstractProductB {
 产品实现类
 ```
 public class ProductA1 extends AbstractProductA {
-	@Override
-	public void doSomething() {
-		System.out.println("产品A1的实现方法");
-	}
+    @Override
+    public void doSomething() {
+        System.out.println("产品A1的实现方法");
+    }
 }
 public class ProductA2 extends AbstractProductA {
-	@Override
-	public void doSomething() {
-		System.out.println("产品A2的实现方法");
-	}
+    @Override
+    public void doSomething() {
+        System.out.println("产品A2的实现方法");
+    }
 }
 
 public class ProductB1 extends AbstractProductB {
-	@Override
-	public void doSomething() {
-		System.out.println("产品B1的实现方法");
-	}
+    @Override
+    public void doSomething() {
+        System.out.println("产品B1的实现方法");
+    }
 }
 public class ProductB2 extends AbstractProductB {
-	@Override
-	public void doSomething() {
-		System.out.println("产品B2的实现方法");
-	}
+    @Override
+    public void doSomething() {
+        System.out.println("产品B2的实现方法");
+    }
 }
 
 ```
@@ -281,19 +281,19 @@ public class ProductB2 extends AbstractProductB {
 调用过程
 ```
 public class Client {
-	public static void main(String[] args) {
-		//定义出两个工厂
-		AbstractCreator creator1 = new Creator1();
-		AbstractCreator creator2 = new Creator2();
-		//产生A1对象
-		AbstractProductA a1 = creator1.createProductA();
-		//产生A2对象
-		AbstractProductA a2 = creator2.createProductA();
-		//产生B1对象
-		AbstractProductB b1 = creator1.createProductB();
-		//产生B2对象
-		AbstractProductB b2 = creator2.createProductB();
-	}
+    public static void main(String[] args) {
+        //定义出两个工厂
+        AbstractCreator creator1 = new Creator1();
+        AbstractCreator creator2 = new Creator2();
+        //产生A1对象
+        AbstractProductA a1 = creator1.createProductA();
+        //产生A2对象
+        AbstractProductA a2 = creator2.createProductA();
+        //产生B1对象
+        AbstractProductB b1 = creator1.createProductB();
+        //产生B2对象
+        AbstractProductB b2 = creator2.createProductB();
+    }
 }
 ```
 

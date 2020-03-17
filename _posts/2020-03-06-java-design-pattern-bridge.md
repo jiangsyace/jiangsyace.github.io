@@ -37,23 +37,23 @@ tags:
 ```
 public abstract class Abstraction {
 
-	//定义对实现化角色的引用
-	private Implementor imp;
-	
-	//约束子类必须实现该构造函数
-	public Abstraction(Implementor _imp){
-		this.imp = _imp;
-	}
-	
-	//自身的行为和属性
-	public void request(){
-		this.imp.doSomething();
-	}
-	
-	//获得实现化角色
-	public Implementor getImp(){
-		return imp;
-	}
+    //定义对实现化角色的引用
+    private Implementor imp;
+    
+    //约束子类必须实现该构造函数
+    public Abstraction(Implementor _imp){
+        this.imp = _imp;
+    }
+    
+    //自身的行为和属性
+    public void request(){
+        this.imp.doSomething();
+    }
+    
+    //获得实现化角色
+    public Implementor getImp(){
+        return imp;
+    }
 }
 
 ```
@@ -61,68 +61,68 @@ public abstract class Abstraction {
 修正抽象化角色
 ```
 public class RefinedAbstraction extends Abstraction {
-	
-	//覆写构造函数
-	public RefinedAbstraction(Implementor _imp){
-		super(_imp);
-	}
-	
-	//修正父类的行文
-	@Override
-	public void request(){
-		/*
-		 * 业务处理....
-		 */
-		super.request();
-		
-		super.getImp().doAnything();
-	}
+    
+    //覆写构造函数
+    public RefinedAbstraction(Implementor _imp){
+        super(_imp);
+    }
+    
+    //修正父类的行文
+    @Override
+    public void request(){
+        /*
+         * 业务处理....
+         */
+        super.request();
+        
+        super.getImp().doAnything();
+    }
 }
 ```
 
 实现化角色
 ```
 public interface Implementor {
-	
-	//基本方法
-	public void doSomething();
-	
-	public void doAnything();
+    
+    //基本方法
+    public void doSomething();
+    
+    public void doAnything();
 }
 ```
 
 具体实现化角色
 ```
 public class ConcreteImplementor1 implements Implementor{
-	public void doSomething(){
-		//业务逻辑处理
-	}
-	public void doAnything(){
-		//业务逻辑处理
-	}
+    public void doSomething(){
+        //业务逻辑处理
+    }
+    public void doAnything(){
+        //业务逻辑处理
+    }
 }
 
 public class ConcreteImplementor2 implements Implementor{
-	public void doSomething(){
-		//业务逻辑处理
-	}
-	public void doAnything(){
-		//业务逻辑处理
-	}
+    public void doSomething(){
+        //业务逻辑处理
+    }
+    public void doAnything(){
+        //业务逻辑处理
+    }
 }
 ```
 
 调用过程：
 ```
 public class Client {
-	public static void main(String[] args) {
-		//定义一个实现化角色
-		Implementor imp = new ConcreteImplementor1();
-		//定义一个抽象化角色
-		Abstraction abs = new RefinedAbstraction(imp);
-		//执行行文
-		abs.request();
-	}
+    public static void main(String[] args) {
+        //定义一个实现化角色
+        Implementor imp = new ConcreteImplementor1();
+        //定义一个抽象化角色
+        Abstraction abs = new RefinedAbstraction(imp);
+        //执行行文
+        abs.request();
+    }
 }
 ```
 ## 桥接模式的优缺点

@@ -37,94 +37,94 @@ tags:
 抽象构件定义了叶子与树枝构件共有的方法
 ```
 public abstract class Component {
-	//个体和整体都具有的共享
-	public void doSomething(){
-		//编写业务逻辑
-	}	
-	//增加一个叶子构件或树枝构件
-	public abstract void add(Component component);
-	
-	//删除一个叶子构件或树枝构件
-	public abstract void remove(Component component);
-	
-	//获得分支下的所有叶子构件和树枝构件
-	public abstract ArrayList<Component> getChildren();
+    //个体和整体都具有的共享
+    public void doSomething(){
+        //编写业务逻辑
+    }    
+    //增加一个叶子构件或树枝构件
+    public abstract void add(Component component);
+    
+    //删除一个叶子构件或树枝构件
+    public abstract void remove(Component component);
+    
+    //获得分支下的所有叶子构件和树枝构件
+    public abstract ArrayList<Component> getChildren();
 }
 
 ```
 叶子节点可以选择使用抽象构件的方法，也可以重写。
 ```
-public class Leaf extends Component {	
-	@Deprecated
-	public void add(Component component) throws UnsupportedOperationException{
-		//空实现,直接抛弃一个“不支持请求”异常
-		throw new UnsupportedOperationException();
-	}
-	
-	@Deprecated
-	public void remove(Component component)throws UnsupportedOperationException{
-		//空实现
-		throw new UnsupportedOperationException();
-	}
-	
-	@Deprecated
-	public ArrayList<Component> getChildren()throws UnsupportedOperationException{
-		//空实现
-		throw new UnsupportedOperationException();		
-	}
+public class Leaf extends Component {    
+    @Deprecated
+    public void add(Component component) throws UnsupportedOperationException{
+        //空实现,直接抛弃一个“不支持请求”异常
+        throw new UnsupportedOperationException();
+    }
+    
+    @Deprecated
+    public void remove(Component component)throws UnsupportedOperationException{
+        //空实现
+        throw new UnsupportedOperationException();
+    }
+    
+    @Deprecated
+    public ArrayList<Component> getChildren()throws UnsupportedOperationException{
+        //空实现
+        throw new UnsupportedOperationException();
+    }
 }
 ```
 树枝构件使用一个容器存储了其下的叶子构件和树枝构件
 ```
 public class Composite extends Component {
-	//构件容器
-	private ArrayList<Component> componentArrayList = new ArrayList<Component>();
-	
-	//增加一个叶子构件或树枝构件
-	public void add(Component component){
-		this.componentArrayList.add(component);
-	}
-	
-	//删除一个叶子构件或树枝构件
-	public void remove(Component component){
-		this.componentArrayList.remove(component);
-	}
-	
-	//获得分支下的所有叶子构件和树枝构件
-	public ArrayList<Component> getChildren(){
-		return this.componentArrayList;
-	}
+    //构件容器
+    private ArrayList<Component> componentArrayList = new ArrayList<Component>();
+    
+    //增加一个叶子构件或树枝构件
+    public void add(Component component){
+        this.componentArrayList.add(component);
+    }
+    
+    //删除一个叶子构件或树枝构件
+    public void remove(Component component){
+        this.componentArrayList.remove(component);
+    }
+    
+    //获得分支下的所有叶子构件和树枝构件
+    public ArrayList<Component> getChildren(){
+        return this.componentArrayList;
+    }
 }
 
 ```
 调用过程：
 ```
 public class Client {
-	public static void main(String[] args) {
-		//创建一个根节点
-		Composite root = new Composite();
-		root.doSomething();
-		
-		//创建一个树枝构件
-		Composite branch = new Composite();
-		//创建一个叶子节点
-		Leaf leaf = new Leaf();
+    public static void main(String[] args) {
+        //创建一个根节点
+        Composite root = new Composite();
+        root.doSomething();
+        
+        //创建一个树枝构件
+        Composite branch = new Composite();
+        //创建一个叶子节点
+        Leaf leaf = new Leaf();
 
-		//建立整体
-		root.add(branch);
-		branch.add(leaf);		
-	}
-	
-	//通过递归遍历树
-	public static void display(Component root){
-		for(Component c:root.getChildren()){
-			if(c instanceof Leaf){ //叶子节点
-				c.doSomething();
-			}else{ //树枝节点
-				display(c);
-			}
-		}
-	}
+        //建立整体
+        root.add(branch);
+        branch.add(leaf);
+    }
+    
+    //通过递归遍历树
+    public static void display(Component root){
+        for(Component c:root.getChildren()){
+            if(c instanceof Leaf){ //叶子节点
+                c.doSomething();
+            }else{ //树枝节点
+                display(c);
+            }
+        }
+    }
 }
 ```
 有些情况下，叶子节点和树枝节点的功能是一样的，比如Zookeeper中的Znode，这时候我们可以用透明组合模式。但是还有些情况下，叶子节点是无法添加和获取子节点的，这些方法在叶子节点中定义是无意义的，比如文件目录结构，文件不能跟目录一样添加和获取文件，所以针对这个问题，我们可以采用安全组合模式。
@@ -143,20 +143,20 @@ public class Client {
 ```
 public abstract class Component {
 
-	//个体和整体都具有的共享
-	public void doSomething(){
-		//编写业务逻辑
-	}
+    //个体和整体都具有的共享
+    public void doSomething(){
+        //编写业务逻辑
+    }
 }
 ```
 
 叶子节点所实现的方法都是自己需要的，而不用强制去实现树枝构件需要的方法。
 ```
 public class Leaf extends Component {
-	 //可以覆写父类方法
-	 public void doSomething(){
+     //可以覆写父类方法
+     public void doSomething(){
 
-	 }
+     }
 }
 
 ```
@@ -164,63 +164,63 @@ public class Leaf extends Component {
 树枝构件同样只实现需要的方法
 ```
 public class Composite extends Component {
-	//构件容器
-	private ArrayList<Component> componentArrayList = new ArrayList<Component>();
-	
-	//增加一个叶子构件或树枝构件
-	public void add(Component component){
-		this.componentArrayList.add(component);
-	}
-	
-	//删除一个叶子构件或树枝构件
-	public void remove(Component component){
-		this.componentArrayList.remove(component);
-	}
-	
-	//获得分支下的所有叶子构件和树枝构件
-	public ArrayList<Component> getChildren(){
-		return this.componentArrayList;
-	}
+    //构件容器
+    private ArrayList<Component> componentArrayList = new ArrayList<Component>();
+    
+    //增加一个叶子构件或树枝构件
+    public void add(Component component){
+        this.componentArrayList.add(component);
+    }
+    
+    //删除一个叶子构件或树枝构件
+    public void remove(Component component){
+        this.componentArrayList.remove(component);
+    }
+    
+    //获得分支下的所有叶子构件和树枝构件
+    public ArrayList<Component> getChildren(){
+        return this.componentArrayList;
+    }
 }
 
 ```
 调用过程
 ```
 public class Client {
-	public static void main(String[] args) {
-		//创建一个根节点
-		Composite root = new Composite();
-		root.doSomething();
-		
-		//创建一个树枝构件
-		Composite branch = new Composite();
-		//创建一个叶子节点
-		Leaf leaf = new Leaf();
-		
-		//建立整体
-		root.add(branch);
-		branch.add(leaf);		
-	}
-	
-	//通过递归遍历树
-	public static void display(Composite root){
-		for(Component c:root.getChildren()){
-			if(c instanceof Leaf){ //叶子节点
-				c.doSomething();
-			}else{ //树枝节点
-				display((Composite)c);
-			}
-		}
-	}
+    public static void main(String[] args) {
+        //创建一个根节点
+        Composite root = new Composite();
+        root.doSomething();
+        
+        //创建一个树枝构件
+        Composite branch = new Composite();
+        //创建一个叶子节点
+        Leaf leaf = new Leaf();
+        
+        //建立整体
+        root.add(branch);
+        branch.add(leaf);        
+    }
+    
+    //通过递归遍历树
+    public static void display(Composite root) {
+        for (Component c : root.getChildren()) {
+            if (c instanceof Leaf) { //叶子节点
+                c.doSomething();
+            } else { //树枝节点
+                display((Composite)c);
+            }
+        }
+    }
 }
 ```
 
 ## 组合模式的优缺点
 
 + 优点：
-  + 统一了组合对象和叶子对象。
-  + 简化了客户端调用，无须区分操作的是组合对象还是叶子对象。
-  + 更容易扩展，有了Component的约束，新定义的Composite或Leaf子类能够很容易地与已有的结构一起工作。
+	+ 统一了组合对象和叶子对象。
+	+ 简化了客户端调用，无须区分操作的是组合对象还是叶子对象。
+	+ 更容易扩展，有了Component的约束，新定义的Composite或Leaf子类能够很容易地与已有的结构一起工作。
 
 + 缺点：
 	+ 树枝和树叶的定义直接使用了实现类，在面向接口编程上不是很恰当，与依赖倒置原则冲突。

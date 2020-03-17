@@ -25,7 +25,7 @@ tags:
  * 懒汉模式（延迟加载，非线程安全）
  */
 public class LazySingleton {
-		private static LazySingleton lazySingleton = null;
+    private static LazySingleton lazySingleton = null;
     private LazySingleton() {}
     public static LazySingleton getInstance() {
         if (lazySingleton == null) {
@@ -44,21 +44,21 @@ public class LazySingleton {
  */
 public class HungrySingleton implements Serializable {
 
-		private final static HungrySingleton hungrySingleton = new HungrySingleton();
+        private final static HungrySingleton hungrySingleton = new HungrySingleton();
 
-		private HungrySingleton() {
-			//防止反射生成新实例
-			if(hungrySingleton != null){
+        private HungrySingleton() {
+            //防止反射生成新实例
+            if(hungrySingleton != null){
             throw new RuntimeException("单例模式禁止反射调用！");
         }
-		}
+        }
 
-		public static HungrySingleton getInstance() {
-    		return hungrySingleton;
-		}
+        public static HungrySingleton getInstance() {
+            return hungrySingleton;
+        }
 
-		//防止反序列化生成新实例
-		private Object readResolve(){
+        //防止反序列化生成新实例
+        private Object readResolve(){
         return serializableSingleton;
     }
 }
@@ -122,7 +122,7 @@ CAS的一个重要缺点在于如果忙等待一直执行不成功(一直在死�
  */
 public class CasSingleton {
     private static final AtomicReference<CasSingleton> INSTANCE = new AtomicReference();
-		private CasSingleton() {}
+    private CasSingleton() {}
     public static final CasSingleton getInstance(){
         while(true){
             CasSingleton casClass = INSTANCE.get();
@@ -215,7 +215,7 @@ public class Test {
 ## 单例模式的优缺点
 + 优点
 	+ 单例模式存在一个全局访问点，所以优化共享资源；
-	+ 只生成一个实例，减少了开销，对于一些需要频繁创建和销毁的对象，单例模式可以提高系统性能
+    + 只生成一个实例，减少了开销，对于一些需要频繁创建和销毁的对象，单例模式可以提高系统性能
 + 缺点
-	+ 由于单例模式中没有抽象层，因此扩展困难；
-	+ 职责过重，在一定程度上违背了“单一职责原则”。
+    + 由于单例模式中没有抽象层，因此扩展困难；
+    + 职责过重，在一定程度上违背了“单一职责原则”。

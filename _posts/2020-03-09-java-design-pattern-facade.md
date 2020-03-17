@@ -27,23 +27,23 @@ tags:
 子系统角色相对独立，分别实现各自的业务逻辑，这些业务可以直接被客户端调用，也可以被外观角色调用。
 ```
 public class ClassA {
-	
-	public void doSomethingA(){
-		//业务逻辑
-	}
+
+    public void doSomethingA(){
+        //业务逻辑
+    }
 }
 public class ClassB {
-	
-	public void doSomethingB(){
-		//业务逻辑
-	}
+
+    public void doSomethingB(){
+        //业务逻辑
+    }
 }
 
 public class ClassC {
-	
-	public void doSomethingC(){
-		//业务逻辑
-	}
+
+    public void doSomethingC(){
+        //业务逻辑
+    }
 }
 
 ```
@@ -51,24 +51,24 @@ public class ClassC {
 外观角色包含多个子系统，并提供对外访问的方法。
 ```
 public class Facade {
-	//被委托的对象
-	private ClassA a = new ClassA();
-	private ClassB b = new ClassB();
-	private ClassC c = new ClassC();
-	
-	//提供给外部访问的方法
-	public void methodA(){
-		this.a.doSomethingA();
-	}
-	
-	public void methodB(){
-		this.b.doSomethingB();
-	}
-	
-	public void methodC(){
-		this.a.doSomethingA();
-		this.c.doSomethingC();
-	}
+    //被委托的对象
+    private ClassA a = new ClassA();
+    private ClassB b = new ClassB();
+    private ClassC c = new ClassC();
+    
+    //提供给外部访问的方法
+    public void methodA(){
+        this.a.doSomethingA();
+    }
+    
+    public void methodB(){
+        this.b.doSomethingB();
+    }
+    
+    public void methodC(){
+        this.a.doSomethingA();
+        this.c.doSomethingC();
+    }
 }
 ```
 
