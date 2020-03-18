@@ -1,5 +1,5 @@
 ---
-title: ÔÚÊ÷İ®ÅÉÉÏ°²×°¿ª·¢ÒÀÀµµÄ·şÎñ  
+title: åœ¨æ ‘è“æ´¾ä¸Šå®‰è£…å¼€å‘ä¾èµ–çš„æœåŠ¡  
 date: 2020-03-17
 categories:
 - tech
@@ -7,20 +7,20 @@ tags:
 - docker
 ---
 
-ÔÚÊ÷İ®ÅÉÉÏ°²×°Docker£¬MySQL£¬Zookeeper£¬Redis£¬RabbitMQµÈ·şÎñ£¬±ãÓÚÔÚWindowsºÍMac¿ª·¢»·¾³ÇĞ»»¡£
+åœ¨æ ‘è“æ´¾ä¸Šå®‰è£…Dockerï¼ŒMySQLï¼ŒZookeeperï¼ŒRedisï¼ŒRabbitMQç­‰æœåŠ¡ï¼Œä¾¿äºåœ¨Windowså’ŒMacå¼€å‘ç¯å¢ƒåˆ‡æ¢ã€‚
 
 <!-- more -->
 
 ## Docker
 
-### °²×°docker
+### å®‰è£…docker
 
-ÏÂÔØ°²×°½Å±¾£º
+ä¸‹è½½å®‰è£…è„šæœ¬ï¼š
 ```
 curl -fsSL https://get.docker.com -o get-docker.sh
 ```
 
-Ê¹ÓÃ°¢ÀïÔÆ¾µÏñÏÂÔØ°²×°£º
+ä½¿ç”¨é˜¿é‡Œäº‘é•œåƒä¸‹è½½å®‰è£…ï¼š
 
 ```
 sh get-docker.sh --mirror Aliyun
@@ -28,47 +28,47 @@ sh get-docker.sh --mirror Aliyun
 curl -sSL https://get.docker.com| sh
 ```
 
-Ä¬ÈÏÇé¿öÏÂÖ´ĞĞdockerÃüÁîÊÇĞèÒªrootÈ¨ÏŞµÄ£¬Ò²¾ÍÊÇÒªÓÃsudo docker À´ÔËĞĞ¡£¿ÉÒÔ½«µ±Ç°ÓÃ»§¼ÓÈëdocker×é£¬²¢ÖØÆôÉúĞ§£º
+é»˜è®¤æƒ…å†µä¸‹æ‰§è¡Œdockerå‘½ä»¤æ˜¯éœ€è¦rootæƒé™çš„ï¼Œä¹Ÿå°±æ˜¯è¦ç”¨sudo docker æ¥è¿è¡Œã€‚å¯ä»¥å°†å½“å‰ç”¨æˆ·åŠ å…¥dockerç»„ï¼Œå¹¶é‡å¯ç”Ÿæ•ˆï¼š
 ```
 sudo usermod -aG docker $USER && sudo reboot
 ```
-ÍË³öµ±Ç°ÖÕ¶Ë²¢ÖØĞÂµÇÂ¼£¬´ËÊ±²Ù×÷docker²»ÔÙĞèÒª¼ÓsudoÈ¨ÏŞ
+é€€å‡ºå½“å‰ç»ˆç«¯å¹¶é‡æ–°ç™»å½•ï¼Œæ­¤æ—¶æ“ä½œdockerä¸å†éœ€è¦åŠ sudoæƒé™
 
-×¢Òâ£º
+æ³¨æ„ï¼š
 
-Ê÷İ®ÅÉÊÇarm¼Ü¹¹µÄ£¬ËùÒÔ²»ÄÜÊ¹ÓÃx86Æ½Ì¨µÄ¾µÏñ£¬ÔÚÊ¹ÓÃdocker pull À­È¡Ê±£¬docker»á×Ô¶¯¸ù¾İµ±Ç°¼Ü¹¹È¥²éÕÒÊÇ·ñÓĞ¼Ü¹¹Æ¥ÅäµÄ¾µÏñ£¬ËùÒÔ£¬Èç¹ûÊÇ×ÔÖÆ¾µÏñ£¬ÔòĞèÒª·ÖÆ½Ì¨±àÒë
+æ ‘è“æ´¾æ˜¯armæ¶æ„çš„ï¼Œæ‰€ä»¥ä¸èƒ½ä½¿ç”¨x86å¹³å°çš„é•œåƒï¼Œåœ¨ä½¿ç”¨docker pull æ‹‰å–æ—¶ï¼Œdockerä¼šè‡ªåŠ¨æ ¹æ®å½“å‰æ¶æ„å»æŸ¥æ‰¾æ˜¯å¦æœ‰æ¶æ„åŒ¹é…çš„é•œåƒï¼Œæ‰€ä»¥ï¼Œå¦‚æœæ˜¯è‡ªåˆ¶é•œåƒï¼Œåˆ™éœ€è¦åˆ†å¹³å°ç¼–è¯‘
 
-### °²×°Docker Compose 
+### å®‰è£…Docker Compose 
 
-ÒòÎªÊ÷Ã·ÅÉÊÇarm¼Ü¹¹£¬docker-composeÊÇÃ»ÓĞÌá¹©¹Ù·½µÄ¶ş½øÖÆÎÄ¼şµÄ£¬ËùÒÔÎÒÃÇÒªÊ¹ÓÃpythonµÄpip¹¤¾ßÀ´°²×°docker-compose¡£
+å› ä¸ºæ ‘æ¢…æ´¾æ˜¯armæ¶æ„ï¼Œdocker-composeæ˜¯æ²¡æœ‰æä¾›å®˜æ–¹çš„äºŒè¿›åˆ¶æ–‡ä»¶çš„ï¼Œæ‰€ä»¥æˆ‘ä»¬è¦ä½¿ç”¨pythonçš„pipå·¥å…·æ¥å®‰è£…docker-composeã€‚
 
-¸üĞÂaptÈí¼şÔ´£º
+æ›´æ–°aptè½¯ä»¶æºï¼š
 ```
 sudo apt-get update
 ```
 
-°²×°pythonºÍpip£º
+å®‰è£…pythonå’Œpipï¼š
 ```
 sudo apt-get install -y python python-pip
 ```
 
-°²×°libffi-dev£¬·ñÔòÔÚ°²×°docker-composeµÄÊ±ºò»á±¨´í£º
+å®‰è£…libffi-devï¼Œå¦åˆ™åœ¨å®‰è£…docker-composeçš„æ—¶å€™ä¼šæŠ¥é”™ï¼š
 ```
 sudo apt-get install -y libffi-dev
 ```
 
-Ê¹ÓÃpip°²×°docker-compose£¬ÁÙÊ±Ê¹ÓÃÖĞ¿Æ´óµÄÈí¼şÔ´£º
+ä½¿ç”¨pipå®‰è£…docker-composeï¼Œä¸´æ—¶ä½¿ç”¨ä¸­ç§‘å¤§çš„è½¯ä»¶æºï¼š
 ```
 sudo pip install docker-compose -i https://pypi.mirrors.ustc.edu.cn/simple/  --trusted-host  pypi.mirrors.ustc.edu.cn
 ```
 
-### Docker¾µÏñ¸ü¸ÄÈí¼şÔ´
+### Dockeré•œåƒæ›´æ”¹è½¯ä»¶æº
 
-ÔÚÊ÷İ®ÅÉdockerÖĞ¹¹½¨¾µÏñÊ±£¬Èç¹ûÒª¸ü¸Ä¾µÏñÈí¼şÔ´£¬Ê¹ÓÃ°¸ÀıÈçÏÂ£º
+åœ¨æ ‘è“æ´¾dockerä¸­æ„å»ºé•œåƒæ—¶ï¼Œå¦‚æœè¦æ›´æ”¹é•œåƒè½¯ä»¶æºï¼Œä½¿ç”¨æ¡ˆä¾‹å¦‚ä¸‹ï¼š
 
 ```
 FROM mcr.microsoft.com/dotnet/core/aspnet:3.0
-#°²×°ffmpeg¹¤¾ß
+#å®‰è£…ffmpegå·¥å…·
 RUN sed -i 's/deb.debian.org/mirrors.ustc.edu.cn/g' /etc/apt/sources.list \
     && apt-get update \
     && apt-get install -y ffmpeg \
@@ -76,48 +76,48 @@ RUN sed -i 's/deb.debian.org/mirrors.ustc.edu.cn/g' /etc/apt/sources.list \
     && rm -rf /var/lib/apt/lists/*
 WORKDIR /app
 COPY ./publish/ /app 
-#Ä¬ÈÏ¾ÍÊÇ80¶Ë¿Ú£¬Èç¹ûÒª±ğµÄ¶Ë¿Ú£¬´úÂëÖĞÒªÃ÷È·Ö¸¶¨¼àÌı¶Ë¿ÚºÅ
+#é»˜è®¤å°±æ˜¯80ç«¯å£ï¼Œå¦‚æœè¦åˆ«çš„ç«¯å£ï¼Œä»£ç ä¸­è¦æ˜ç¡®æŒ‡å®šç›‘å¬ç«¯å£å·
 EXPOSE 80
 EXPOSE 443
 ENTRYPOINT ["dotnet","WebMvc.dll"]
 ```
 ## MySQL
 
-ÔÚÊ÷İ®ÅÉÉÏ¹Ù·½mysql¾µÏñÎŞ·¨Ê¹ÓÃ£¬ÒòÎªÊ÷İ®ÅÉµÄ¼Ü¹¹Îªarm£¬ÕâÀïÊ¹ÓÃµÄÓ³ÏñÊÇÀ´×Ô£º[https://hub.docker.com/r/hypriot/rpi-mysql/]
+åœ¨æ ‘è“æ´¾ä¸Šå®˜æ–¹mysqlé•œåƒæ— æ³•ä½¿ç”¨ï¼Œå› ä¸ºæ ‘è“æ´¾çš„æ¶æ„ä¸ºarmï¼Œè¿™é‡Œä½¿ç”¨çš„æ˜ åƒæ˜¯æ¥è‡ªï¼š[https://hub.docker.com/r/hypriot/rpi-mysql/]
 
-pullÓ³Ïñ£º
+pullæ˜ åƒï¼š
 ```
 docker pull hypriot/rpi-mysql
 ```
 
-²é¿´Ó³Ïñ£º
+æŸ¥çœ‹æ˜ åƒï¼š
 ```
 docker images
 ```
 
-Æô¶¯mysqlÊµÀı£º
+å¯åŠ¨mysqlå®ä¾‹ï¼š
 ```
 docker run --name some-mysql -e MYSQL_ROOT_PASSWORD=my-secret-pw -d -p 3307:3306 hypriot/rpi-mysql
 ```
-ÕâÀï°ÑÄ¬ÈÏÃÜÂëÉèÎªmy-secret-pw£¬¿Í»§¶ËÁ¬½Ó¶Ë¿ÚÉèÖÃÎª3307¡£
+è¿™é‡ŒæŠŠé»˜è®¤å¯†ç è®¾ä¸ºmy-secret-pwï¼Œå®¢æˆ·ç«¯è¿æ¥ç«¯å£è®¾ç½®ä¸º3307ã€‚
 
-²é¿´Æô¶¯×´Ì¬£º
+æŸ¥çœ‹å¯åŠ¨çŠ¶æ€ï¼š
 ```
 docker ps -a
 ```
 
-Èç¹ûÏÔÊ¾ÓĞ3306¶Ë¿Ú£¬Ôò±íÊ¾Æô¶¯³É¹¦£¬Èç¹ûÓĞexit(´úÂë)£¬Ôò±íÊ¾Æô¶¯ÈİÆ÷Ê§°Ü£¬¿ÉÒÔ²é¿´ÈÕÖ¾£¬Ê¹ÓÃ
+å¦‚æœæ˜¾ç¤ºæœ‰3306ç«¯å£ï¼Œåˆ™è¡¨ç¤ºå¯åŠ¨æˆåŠŸï¼Œå¦‚æœæœ‰exit(ä»£ç )ï¼Œåˆ™è¡¨ç¤ºå¯åŠ¨å®¹å™¨å¤±è´¥ï¼Œå¯ä»¥æŸ¥çœ‹æ—¥å¿—ï¼Œä½¿ç”¨
 ```
-docker logs ÈİÆ÷Ãû 
+docker logs å®¹å™¨å 
 ```
 
-²âÊÔmysql£º
+æµ‹è¯•mysqlï¼š
 ```
-# µÇÂ¼
+# ç™»å½•
 mysql -uroot -pmy-secret-pw
-# ÇĞ»»Êı¾İ¿â
+# åˆ‡æ¢æ•°æ®åº“
 use mysql;
-# ÏÔÊ¾±í
+# æ˜¾ç¤ºè¡¨
 show tables;
 ```
 
@@ -135,21 +135,21 @@ docker run -d --privileged=true --name some-zookeeper --restart always --publish
 docker run -d --privileged=true --name some-zookeeper --restart always --publish 2181:2181 zookeeper:latest
 ```
 
-²ÎÊıËµÃ÷£º
+å‚æ•°è¯´æ˜ï¼š
 ```
---privileged=true   # Ê¹containerÄÚµÄrootÓµÓĞÕæÕıµÄrootÈ¨ÏŞ
---name              # ÉèÖÃÃû³Æ
--i 	                # ÒÔ½»»¥Ä£Ê½ÔËĞĞÈİÆ÷£¬Í¨³£Óë -t Í¬Ê±Ê¹ÓÃ£»
--t 	                # ÎªÈİÆ÷ÖØĞÂ·ÖÅäÒ»¸öÎ±ÊäÈëÖÕ¶Ë£¬Í¨³£Óë -i Í¬Ê±Ê¹ÓÃ£»
--d 	                # ºóÌ¨ÔËĞĞÈİÆ÷£¬²¢·µ»ØÈİÆ÷ID£»
--p(--publish) 	    # Ö¸¶¨¶Ë¿ÚÓ³Éä£¬¸ñÊ½Îª£ºËŞÖ÷»ú¶Ë¿Ú:ÈİÆ÷¶Ë¿Ú
---restart always    # µ± docker ÖØÆôÊ±£¬ÈİÆ÷×Ô¶¯Æô¶¯
--v                  # ¹ÒÔØÄ¿Â¼£¬¸ñÊ½Îª£ºËŞÖ÷»úÄ¿Â¼:ÈİÆ÷Ä¿Â¼
+--privileged=true   # ä½¿containerå†…çš„rootæ‹¥æœ‰çœŸæ­£çš„rootæƒé™
+--name              # è®¾ç½®åç§°
+-i 	                # ä»¥äº¤äº’æ¨¡å¼è¿è¡Œå®¹å™¨ï¼Œé€šå¸¸ä¸ -t åŒæ—¶ä½¿ç”¨ï¼›
+-t 	                # ä¸ºå®¹å™¨é‡æ–°åˆ†é…ä¸€ä¸ªä¼ªè¾“å…¥ç»ˆç«¯ï¼Œé€šå¸¸ä¸ -i åŒæ—¶ä½¿ç”¨ï¼›
+-d 	                # åå°è¿è¡Œå®¹å™¨ï¼Œå¹¶è¿”å›å®¹å™¨IDï¼›
+-p(--publish) 	    # æŒ‡å®šç«¯å£æ˜ å°„ï¼Œæ ¼å¼ä¸ºï¼šå®¿ä¸»æœºç«¯å£:å®¹å™¨ç«¯å£
+--restart always    # å½“ docker é‡å¯æ—¶ï¼Œå®¹å™¨è‡ªåŠ¨å¯åŠ¨
+-v                  # æŒ‚è½½ç›®å½•ï¼Œæ ¼å¼ä¸ºï¼šå®¿ä¸»æœºç›®å½•:å®¹å™¨ç›®å½•
 ```
 
-ÉèÖÃµ± docker ÖØÆôÊ±£¬ÈİÆ÷×Ô¶¯Æô¶¯£º
+è®¾ç½®å½“ docker é‡å¯æ—¶ï¼Œå®¹å™¨è‡ªåŠ¨å¯åŠ¨ï¼š
 ```
-docker container update --restart=always ÈİÆ÷Ãû
+docker container update --restart=always å®¹å™¨å
 ```
 
 ## Redis
@@ -161,5 +161,5 @@ docker container update --restart=always ÈİÆ÷Ãû
 
 
 
-## ²Î¿¼
-[Ê÷İ®ÅÉ°²×°Ê¹ÓÃdocker](https://www.cnblogs.com/kasnti/p/11833778.html)
+## å‚è€ƒ
+[æ ‘è“æ´¾å®‰è£…ä½¿ç”¨docker](https://www.cnblogs.com/kasnti/p/11833778.html)
