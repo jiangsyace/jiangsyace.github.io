@@ -81,37 +81,62 @@ EXPOSE 80
 EXPOSE 443
 ENTRYPOINT ["dotnet","WebMvc.dll"]
 ```
+
+### Docker常用命令
+
+```
+# 关闭启动重启
+docker stop containerId
+docker start containerId
+docker restart containerId
+# 查看所有容器，包括关闭的
+docker ps -a
+# 停止所有的container
+docker stop $(docker ps -a -q)
+# 删除所有container
+docker rm $(docker ps -a -q)
+# 查看当前images
+docker images
+# 删除images
+docker rmi <image id>
+# 删除untagged images
+docker rmi $(docker images | grep "^<none>" | awk "{print $3}")
+# 删除全部image的话
+docker rmi $(docker images -q)
+```
+
 ## MySQL
 
-在树莓派上官方mysql镜像无法使用，因为树莓派的架构为arm，这里使用的映像是来自：[https://hub.docker.com/r/hypriot/rpi-mysql/]
+在树莓派上官方mysql镜像无法使用，因为树莓派的架构为arm，这里使用的镜像是来自：[https://hub.docker.com/r/hypriot/rpi-mysql/]
 
-pull映像：
+**拉取镜像**
 ```
 docker pull hypriot/rpi-mysql
 ```
 
-查看映像：
+**查看镜像**
 ```
 docker images
 ```
 
-启动mysql实例：
+**启动MySQL实例**
 ```
 docker run --name some-mysql -e MYSQL_ROOT_PASSWORD=my-secret-pw -d -p 3307:3306 hypriot/rpi-mysql
 ```
 这里把默认密码设为my-secret-pw，客户端连接端口设置为3307。
 
-查看启动状态：
+**查看启动状态**
 ```
 docker ps -a
 ```
 
+**查看日志**
 如果显示有3306端口，则表示启动成功，如果有exit(代码)，则表示启动容器失败，可以查看日志，使用
 ```
-docker logs 容器名 
+docker logs some-mysql 
 ```
 
-测试mysql：
+**测试连接**
 ```
 # 登录
 mysql -uroot -pmy-secret-pw
@@ -123,16 +148,16 @@ show tables;
 
 ## Zookeeper
 
-https://hub.docker.com/_/zookeeper?tab=tags
+镜像来源：[https://hub.docker.com/_/zookeeper?tab=tags](https://hub.docker.com/_/zookeeper?tab=tags)
 
 ```
 docker pull zookeeper:3.4.13
 
-docker run -d --privileged=true --name some-zookeeper --restart always -v $(pwd)/zoo.cfg:/conf/zoo.cfg zookeeper:3.4.13
-
 docker run -d --privileged=true --name some-zookeeper --restart always --publish 2181:2181 zookeeper:3.4.13
 
 docker run -d --privileged=true --name some-zookeeper --restart always --publish 2181:2181 zookeeper:latest
+
+docker run -d --privileged=true --name some-zookeeper --restart always -v $(pwd)/zoo.cfg:/conf/zoo.cfg zookeeper:3.4.13
 ```
 
 参数说明：
@@ -154,7 +179,87 @@ docker container update --restart=always 容器名
 
 ## Redis
 
+### 拉取镜像
 
+Redis镜像来源：
+
+[https://hub.docker.com/_/redis](https://hub.docker.com/_/redis)
+
+[https://hub.docker.com/r/arm32v7/redis](https://hub.docker.com/r/arm32v7/redis)
+
+```
+# 查询镜像
+docker search redis
+# 拉取redis镜像
+docker pull redis:5.0.8
+# 查看镜像
+docker images
+docker image ls
+# 启动单台Redis服务
+docker run --name single-redis -d -p 6379:6379 redis:5.0.8
+```
+
+### 配置主从同步
+
+有两种方式，一种是直接进入容器中使用`redis-cli`命令，在redis不重启的情况下临时配置主从关系，但redis重启后要重新配置。另一种方式是修改`redis.conf`配置文件，这样的配置是永久性的，重启后仍然可用。这里使用第一种方式，一般配置完成后持续运行。
+
+```
+# 启动Redis容器
+docker run --name redis-master   -d -p 6379:6379 -p 26379:26379  redis:5.0.8
+docker run --name redis-slave01  -d -p 6380:6379 -p 26380:26379  redis:5.0.8
+docker run --name redis-slave02  -d -p 6381:6379 -p 26381:26379  redis:5.0.8
+
+# 查看容器的ip
+docker inspect -f {{".NetworkSettings.IPAddress"}} redis-master
+docker inspect --format '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' container_name_or_id
+
+# 进入已运行容器中执行命令，使用`CTRL-D`快捷键或者`exit`命令退出
+docker exec -it redis-master /bin/bash
+docker exec -it redis-slave01 /bin/bash
+docker exec -it redis-slave02 /bin/bash
+# 进入容器，如果发送 `CTRL-C`信号(输入) 直接会终止容器运行；且如果容器内没有标准输出，那么attach之后无显示内容
+docker attach redis-slave01  
+
+# 查看主从复制状态
+> redis-cli
+127.0.0.1:6379> info replication
+# 在每台从服务器上设置连接的主服务器
+127.0.0.1:6379> SLAVEOF 172.17.0.3 6379
+# 使用exit或者CTRL-D退出客户端
+127.0.0.1:6379> exit
+```
+
+### 配置哨兵模式（Sentinel）
+
+```
+# 在每个容器根目录里面创建sentinel.conf文件，参数如下：
+# sentinel monitor <master-name> <ip> <redis-port> <quorum>
+# <quorum>：当quorum个数的哨兵认为master主节点失联，那么这时客观上认为主节点失联了
+
+# 生成配置文件
+echo -e 'sentinel monitor redis-master 172.17.0.3 6379 1\ndaemonize yes' >> ./sentinel.conf
+
+# 在每台容器上启动哨兵
+redis-sentinel ./sentinel.conf
+
+# 验证Failover（故障转移）
+docker stop redis-master
+# 主服务器停止后，在从服务器上用 info replication 命令查询主从切换是否成功。
+> redis-cli
+127.0.0.1:6379> info replication
+```
+
+**其他命令**
+```
+# 停止所有容器
+docker stop $(docker ps -a -q)
+
+# 停止所有redis容器
+docker stop $(docker ps | grep "redis" | awk '{print $1}')
+
+# 删除所有redis容器
+docker rm $(docker ps -a | grep "redis" | awk '{print $1}')
+```
 
 ## RabbitMQ
 
