@@ -107,7 +107,7 @@ docker rmi $(docker images -q)
 
 ## MySQL
 
-在树莓派上官方mysql镜像无法使用，因为树莓派的架构为arm，这里使用的镜像是来自：[https://hub.docker.com/r/hypriot/rpi-mysql/]
+在树莓派上官方mysql镜像无法使用，因为树莓派的架构为arm，这里使用的镜像是来自：[https://hub.docker.com/r/hypriot/rpi-mysql/](https://hub.docker.com/r/hypriot/rpi-mysql/)
 
 **拉取镜像**
 ```
@@ -164,9 +164,9 @@ docker run -d --privileged=true --name some-zookeeper --restart always -v $(pwd)
 ```
 --privileged=true   # 使container内的root拥有真正的root权限
 --name              # 设置名称
--i 	                # 以交互模式运行容器，通常与 -t 同时使用；
--t 	                # 为容器重新分配一个伪输入终端，通常与 -i 同时使用；
--d 	                # 后台运行容器，并返回容器ID；
+-i                  # 以交互模式运行容器，通常与 -t 同时使用；
+-t                  # 为容器重新分配一个伪输入终端，通常与 -i 同时使用；
+-d                  # 后台运行容器，并返回容器ID；
 -p(--publish) 	    # 指定端口映射，格式为：宿主机端口:容器端口
 --restart always    # 当 docker 重启时，容器自动启动
 -v                  # 挂载目录，格式为：宿主机目录:容器目录
