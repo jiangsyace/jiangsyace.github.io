@@ -1,5 +1,5 @@
 ---
-title: Java设计模式——状态模式
+title: Java设计模式——观察者模式
 date: 2020-03-20
 categories:
 - tech
