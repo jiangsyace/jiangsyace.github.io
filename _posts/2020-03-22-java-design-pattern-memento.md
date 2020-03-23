@@ -27,80 +27,80 @@ tags:
 备忘录
 ```
 public class Memento {
-	//发起人的内部状态
-	private String state = "";
-	
-	//构造函数传递参数
-	public Memento(String _state){
-		this.state = _state;
-	}
-	public String getState() {
-		return state;
-	}
+    //发起人的内部状态
+    private String state = "";
+    
+    //构造函数传递参数
+    public Memento(String _state){
+        this.state = _state;
+    }
+    public String getState() {
+        return state;
+    }
 
-	public void setState(String state) {
-		this.state = state;
-	}
+    public void setState(String state) {
+        this.state = state;
+    }
 }
 ```
 
 备忘录管理者
 ```
 public class Caretaker {
-	//容纳备忘录的容器
-	private HashMap<String, Memento> memMap = new HashMap<String, Memento>();
+    //容纳备忘录的容器
+    private HashMap<String, Memento> memMap = new HashMap<String, Memento>();
 
-	public Memento getMemento(String idx) {
-		return memMap.get(idx);
-	}
+    public Memento getMemento(String idx) {
+        return memMap.get(idx);
+    }
 
-	public void setMemento(String idx,Memento memento) {
-		this.memMap.put(idx, memento);
-	}
-	
+    public void setMemento(String idx,Memento memento) {
+        this.memMap.put(idx, memento);
+    }
+    
 }
 ```
 
 发起人
 ```
 public class Originator {
-	//内部状态
-	private String state = "";
-	
-	public String getState() {
-		return state;
-	}
+    //内部状态
+    private String state = "";
+    
+    public String getState() {
+        return state;
+    }
 
-	public void setState(String state) {
-		this.state = state;
-	}
+    public void setState(String state) {
+        this.state = state;
+    }
 
-	//创建一个备忘录
-	public Memento createMemento(){
-		return new Memento(this.state);
-	}
-	
-	//恢复一个备忘录
-	public void restoreMemento(Memento _memento){
-		this.setState(_memento.getState());
-	}
+    //创建一个备忘录
+    public Memento createMemento(){
+        return new Memento(this.state);
+    }
+    
+    //恢复一个备忘录
+    public void restoreMemento(Memento _memento){
+        this.setState(_memento.getState());
+    }
 }
 ```
 
 调用过程
 ```
 public class Client {
-	public static void main(String[] args) {
-		//定义出发起人
-		Originator originator = new Originator();
-		//定义出备忘录管理员
-		Caretaker caretaker = new Caretaker();
-		//创建两个备忘录
-		caretaker.setMemento("001",originator.createMemento());
-		caretaker.setMemento("002",originator.createMemento());
-		//恢复一个指定标记的备忘录
-		originator.restoreMemento(caretaker.getMemento("001"));
-	}
+    public static void main(String[] args) {
+        //定义出发起人
+        Originator originator = new Originator();
+        //定义出备忘录管理员
+        Caretaker caretaker = new Caretaker();
+        //创建两个备忘录
+        caretaker.setMemento("001",originator.createMemento());
+        caretaker.setMemento("002",originator.createMemento());
+        //恢复一个指定标记的备忘录
+        originator.restoreMemento(caretaker.getMemento("001"));
+    }
 }
 ```
 
