@@ -12,12 +12,15 @@ Intellij IDEA常用配置及快捷键
 ## 显示实体类的属性注释
 Settings -> Editor -> General -> Show quick documentation on mouse move
 
+## 去除UML类图中多余的依赖线
+Settings -> Tools -> Diagrams -> Show Usages
+
 ## 禁止检测更新
 Settings -> Appearance & Behavior -> System Settings -> Updates
 
 ## 常用快捷键
 + Shift + Shift 可在一个弹出框中搜索任何东西，包括类、资源、配置项、方法等等。
-+ Ctrl+Tab 切换文件
++ Ctrl + Tab 切换文件
 
 ## 设置IDEA快捷键为Eclipse风格
 
