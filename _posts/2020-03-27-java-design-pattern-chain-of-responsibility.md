@@ -30,13 +30,13 @@ public abstract class AbstractHandler  {
     public final Response handlerRequest(MyRequest request) {
         Response response = null;
 
-        if(this.getHandlerLevel()==request.getLevel()) {
+        if (this.getHandlerLevel() == request.getLevel()) {
             response = this.response(request);
-        }else {
-            if(this.nextHandler != null) {
+        } else {
+            if (this.nextHandler != null) {
                 System.out.println("转到下一个处理者中...");
                 response = this.nextHandler.handlerRequest(request);
-            }else {
+            } else {
                 System.out.println("后面没有处理请求了...");
             }
         }
@@ -129,7 +129,7 @@ public class Client {
         //A到B组成一个链
         handler1.setNextHandler(handler2);
         Response response = handler1.handlerRequest(new MyRequest(new Level(1)));
-	}
+    }
 }
 ```
 
