@@ -32,6 +32,7 @@ public class Test {
 1. 把另外一个方法放到其他类中
 2. 本类中通过ApplicationContext获取bean再调用方法
 3. 注入自身Bean，调用自身Bean的方法来实现AOP代理操作
+
 ```
 @Autowired
 @Lazy
@@ -41,6 +42,7 @@ public void a(){
 }
 ```
 4. 使用`@EnableAspectJAutoProxy`注解
+
 ```
 @Sevice
 @EnableAspectJAutoProxy(proxyTargetClass = true, exposeProxy = true)
