@@ -31,8 +31,16 @@ public class Test {
 解决方法1：让方法间调用通过代理。
 1. 把另外一个方法放到其他类中
 2. 本类中通过ApplicationContext获取bean再调用方法
-
-解决方法2：使用`@EnableAspectJAutoProxy`注解
+3. 注入自身Bean，调用自身Bean的方法来实现AOP代理操作
+```
+@Autowired
+@Lazy
+private Test test;
+public void a(){
+    test.b();
+}
+```
+4. 使用`@EnableAspectJAutoProxy`注解
 ```
 @Sevice
 @EnableAspectJAutoProxy(proxyTargetClass = true, exposeProxy = true)
@@ -50,7 +58,7 @@ public class Test {
   }
 ```
 
-解决方法3：使用编程式事务
+解决方法2：使用编程式事务
 
 ```
 import org.springframework.transaction.PlatformTransactionManager;
