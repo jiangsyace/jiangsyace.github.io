@@ -1,0 +1,72 @@
+---
+title: Spring Boot中方法间调用的事务传播
+date: 2020-04-30
+categories:
+- tech
+tags:
+- java
+- spring
+---
+
+众所周知，Spring有七种事务传播机制，它们是通过AOP的方式来实现的，代理在调用原对象方法前开启事务，调用完成之后提交事务，但是如果同一个类中的方法间调用，就不会通过代理了，而是原对象直接调用方法，这时候没有通过代理就不会传播事务，方法上的`@Transactional`注解会失去作用。
+
+<!-- more -->
+
+```
+@Sevice
+public class Test {
+
+  public void a(){
+    b();
+  }
+
+  @Transactional
+  public void b(){
+    System.out.print("b");
+  }
+}
+```
+此时事务时不生效的，因为`@Transactional`声明式事务是通过代理来控制的，方法调用本类方法，事务不会生效。
+
+解决方法1：让方法间调用通过代理。
+1. 把另外一个方法放到其他类中
+2. 本类中通过ApplicationContext获取bean再调用方法
+
+解决方法2：使用`@EnableAspectJAutoProxy`注解
+```
+@Sevice
+@EnableAspectJAutoProxy(proxyTargetClass = true, exposeProxy = true)
+public class Test {
+
+  public void a(){
+    // 通过代理方式调用方法
+    ((Test)AopContext.currentProxy()).b();
+    // b();
+  }
+
+  @Transactional
+  public void b(){
+    System.out.print("b");
+  }
+```
+
+解决方法3：使用编程式事务
+
+```
+import org.springframework.transaction.PlatformTransactionManager;
+import org.springframework.transaction.TransactionStatus;
+import org.springframework.transaction.support.DefaultTransactionDefinition;
+
+//注入事务管理器对象：
+@Autowired
+private PlatformTransactionManager txManager;
+
+//开启事务：
+TransactionStatus status = txManager.getTransaction(new DefaultTransactionDefinition());
+
+//提交：
+txManager.commit(status);
+
+//回滚：
+txManager.rollback(status);
+```

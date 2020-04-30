@@ -12,6 +12,35 @@ Intellij IDEA常用配置及快捷键
 ## 显示实体类的属性注释
 Settings -> Editor -> General -> Show quick documentation on mouse move
 
+## 自定义类注释和方法注释
+新建Class文件的默认注释：
+
+Settings -> Editor -> File and Code Templates -> Class
+
+输入指定按键自动生成的注释：
+
+Settings -> Editor -> Live Templates -> 右上角+号 -> Template Group
+
+创建模板： `+ Live Template`
+```
+/**
+ *
+ * @author shenyun.jiang
+ * @date $date$ $time$
+ */
+```
+Edit variables:
+```
+#Name    #Expression
+--------------------------------------------------
+date   : date()
+time   : time()
+param  : groovyScript("def result=''; def params=\"${_1}\".replaceAll('[\\\\[|\\\\]|\\\\s]', '').split(',').toList(); for(i = 0; i < params.size(); i++) {result+=' * @param ' + params[i] + ((i < params.size() - 1) ? '\\n\\b' : '')}; return result", methodParameters())
+return : methodReturnType()
+throws : expressionType(Expression)
+--------------------------------------------------
+```
+
 ## 去除UML类图中多余的依赖线
 Settings -> Tools -> Diagrams -> Show Usages
 
