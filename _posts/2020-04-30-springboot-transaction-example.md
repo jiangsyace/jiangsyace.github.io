@@ -38,6 +38,7 @@ public class Test {
 解决方法1：让方法间调用通过代理。
 1. 把另外一个方法放到其他类中  
 2. 本类中通过ApplicationContext获取bean再调用方法  
+
 ```
 @Autowired
 ApplicationContext applicationContext;
@@ -45,6 +46,7 @@ ApplicationContext applicationContext;
 applicationContext.getBean("test")).b();
 ```
 3. 注入自身Bean，调用自身Bean的方法来实现AOP代理操作  
+
 ```
 @Autowired
 @Lazy
