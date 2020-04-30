@@ -12,6 +12,7 @@ tags:
 
 <!-- more -->
 
+## 场景
 ```
 @Sevice
 public class Test {
@@ -26,11 +27,25 @@ public class Test {
   }
 }
 ```
-此时事务时不生效的，因为`@Transactional`声明式事务是通过代理来控制的，方法调用本类方法，事务不会生效。
+此时b方法的事务是不生效的
+
+## 原因
+
+`@Transactional`声明式事务是通过AOP代理来控制的，本类的方法间方法，事务不会生效。
+
+## 解决办法
 
 解决方法1：让方法间调用通过代理。
 1. 把另外一个方法放到其他类中
 2. 本类中通过ApplicationContext获取bean再调用方法
+
+```
+@Autowired
+ApplicationContext applicationContext;
+
+applicationContext.getBean("test")).b();
+```
+
 3. 注入自身Bean，调用自身Bean的方法来实现AOP代理操作
 
 ```
@@ -41,7 +56,7 @@ public void a(){
     test.b();
 }
 ```
-4. 使用`@EnableAspectJAutoProxy`注解
+4. 使用`@EnableAspectJAutoProxy`注解，通过AopContext获取当前类的代理类
 
 ```
 @Sevice
