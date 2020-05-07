@@ -10,12 +10,20 @@ Intellij IDEA常用配置及快捷键
 <!-- more -->
 
 ## 显示实体类的属性注释
-Settings -> Editor -> General -> Show quick documentation on mouse move
+Settings -> Editor -> Code Editing -> Quick Documentation -> Show quick documentation on mouse move
 
 ## 自定义类注释和方法注释
 新建Class文件的默认注释：
 
 Settings -> Editor -> File and Code Templates -> Class
+```
+/**
+ * 
+ * @author shenyun.jiang
+ * @date ${DATE} ${TIME}
+ */
+```
+日期格式同系统日期格式，可在日期与时间偏好设置里面修改格式
 
 输入指定按键自动生成的注释：
 
@@ -24,7 +32,9 @@ Settings -> Editor -> Live Templates -> 右上角+号 -> Template Group
 创建模板： `+ Live Template`
 ```
 /**
- *
+ * @Description: 
+ * @param $param$
+ * @return $return$ß
  * @author shenyun.jiang
  * @date $date$ $time$
  */
@@ -35,9 +45,8 @@ Edit variables:
 --------------------------------------------------
 date   : date()
 time   : time()
-param  : groovyScript("def result=''; def params=\"${_1}\".replaceAll('[\\\\[|\\\\]|\\\\s]', '').split(',').toList(); for(i = 0; i < params.size(); i++) {result+=' * @param ' + params[i] + ((i < params.size() - 1) ? '\\n\\b' : '')}; return result", methodParameters())
+param  : methodParameters()
 return : methodReturnType()
-throws : expressionType(Expression)
 --------------------------------------------------
 ```
 
