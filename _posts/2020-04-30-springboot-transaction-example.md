@@ -39,44 +39,40 @@ public class Test {
 1. 把另外一个方法放到其他类中  
 2. 本类中通过ApplicationContext获取bean再调用方法  
   ```java
-  @Autowired
-  ApplicationContext applicationContext;
-
-  applicationContext.getBean("test")).b();
-  ```  
+    @Autowired
+    ApplicationContext applicationContext;
+    applicationContext.getBean("test")).b();
+  ``` 
 3. 注入自身Bean，调用自身Bean的方法来实现AOP代理操作  
   ```java
-  @Sevice
-  public class Test {
-
-    @Autowired
-    @Lazy
-    private Test test;
-    public void a(){
-        test.b();
+    @Sevice
+    public class Test {
+      @Autowired
+      @Lazy
+      private Test test;
+      public void a(){
+          test.b();
+      }
+      @Transactional
+      public void b(){
+        System.out.print("b");
+      }
     }
-
-    @Transactional
-    public void b(){
-      System.out.print("b");
-    }
-  }
   ```  
 4. 使用`@EnableAspectJAutoProxy`注解，通过AopContext获取当前类的代理类  
   ```
-  @Sevice
-  @EnableAspectJAutoProxy(proxyTargetClass = true, exposeProxy = true)
-  public class Test {
-
-    public void a(){
-      // 通过代理方式调用方法
-      ((Test)AopContext.currentProxy()).b();
-      // b();
-    }
-
-    @Transactional
-    public void b(){
-      System.out.print("b");
+    @Sevice
+    @EnableAspectJAutoProxy(proxyTargetClass = true, exposeProxy = true)
+    public class Test {
+      public void a(){
+        // 通过代理方式调用方法
+        ((Test)AopContext.currentProxy()).b();
+        // b();
+      }
+      @Transactional
+      public void b(){
+        System.out.print("b");
+      }
     }
   ```
 
