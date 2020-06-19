@@ -35,7 +35,7 @@ public class Test {
 
 ## 解决办法
 
-### 解决方式1：让方法间调用通过代理。
+### 解决方式1：使用AOP实现事务
 1. 把另外一个方法放到其他类中  
 2. 本类中通过ApplicationContext获取bean再调用方法  
   ```java
