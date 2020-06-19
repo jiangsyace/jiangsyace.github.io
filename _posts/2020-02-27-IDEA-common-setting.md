@@ -92,3 +92,6 @@ Settings -> Appearance & Behavior -> System Settings -> Updates
 | Ctrl+F             | Ctrl+F/Ctrl+R      | Find/Replace                    | 查找替换                            |
 | Shift+Enter        | Shift+Enter        | Start New Line                  | 开启新的一行                        |
 | Ctrl+Alt+S         | Ctrl+Alt+S         | Generate                        | 生成getter,setter,tostring等        |
+
+## 打开多个文件显示在多行tab上
+Settings -> Editor -> General -> Editor tabs -> show tabs in single row
