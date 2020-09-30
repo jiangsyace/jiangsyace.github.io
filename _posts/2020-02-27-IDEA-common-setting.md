@@ -95,3 +95,9 @@ Settings -> Appearance & Behavior -> System Settings -> Updates
 
 ## 打开多个文件显示在多行tab上
 Settings -> Editor -> General -> Editor tabs -> show tabs in single row
+
+## 显示实时内存
+View -> Appearance -> Status Bar Widgets -> Memory Indicator
+
+
+
