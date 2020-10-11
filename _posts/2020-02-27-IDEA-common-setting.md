@@ -13,7 +13,45 @@ Intellij IDEA常用配置及快捷键
 Settings -> Editor -> General -> Code Completion -> Match case
 
 ## 显示实体类的属性注释
-Settings -> Editor -> General -> Show quick documentation on mouse move
+Settings -> Editor -> Code Editing -> Quick Documentation -> Show quick documentation on mouse move
+
+## 自定义类注释和方法注释
+新建Class文件的默认注释：
+
+Settings -> Editor -> File and Code Templates -> Class
+```
+/**
+ * 
+ * @author shenyun.jiang
+ * @date ${DATE} ${TIME}
+ */
+```
+日期格式同系统日期格式，可在日期与时间偏好设置里面修改格式
+
+输入指定按键自动生成的注释：
+
+Settings -> Editor -> Live Templates -> 右上角+号 -> Template Group
+
+创建模板： `+ Live Template`
+```
+/**
+ * @Description: 
+ * @param $param$
+ * @return $return$ß
+ * @author shenyun.jiang
+ * @date $date$ $time$
+ */
+```
+Edit variables:
+```
+#Name    #Expression
+--------------------------------------------------
+date   : date()
+time   : time()
+param  : methodParameters()
+return : methodReturnType()
+--------------------------------------------------
+```
 
 ## 去除UML类图中多余的依赖线
 Settings -> Tools -> Diagrams -> Show Usages
@@ -57,3 +95,12 @@ Settings -> Appearance & Behavior -> System Settings -> Updates
 | Ctrl+F             | Ctrl+F/Ctrl+R      | Find/Replace                    | 查找替换                            |
 | Shift+Enter        | Shift+Enter        | Start New Line                  | 开启新的一行                        |
 | Ctrl+Alt+S         | Ctrl+Alt+S         | Generate                        | 生成getter,setter,tostring等        |
+
+## 打开多个文件显示在多行tab上
+Settings -> Editor -> General -> Editor tabs -> show tabs in single row
+
+## 显示实时内存
+View -> Appearance -> Status Bar Widgets -> Memory Indicator
+
+
+
