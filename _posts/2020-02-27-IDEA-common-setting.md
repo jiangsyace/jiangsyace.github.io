@@ -9,6 +9,9 @@ Intellij IDEA常用配置及快捷键
 
 <!-- more -->
 
+## 代码提示不区分大小写
+Settings -> Editor -> General -> Code Completion -> Match case
+
 ## 显示实体类的属性注释
 Settings -> Editor -> Code Editing -> Quick Documentation -> Show quick documentation on mouse move
 

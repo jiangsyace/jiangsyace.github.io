@@ -121,9 +121,9 @@ docker images
 
 **启动MySQL实例**
 ```
-docker run --name some-mysql -e MYSQL_ROOT_PASSWORD=my-secret-pw -d -p 3307:3306 hypriot/rpi-mysql
+docker run --name some-mysql -e MYSQL_ROOT_PASSWORD=123456 -d -p 3307:3306 hypriot/rpi-mysql
 ```
-这里把默认密码设为my-secret-pw，客户端连接端口设置为3307。
+这里把默认密码设为123456，客户端连接端口设置为3307。
 
 **查看启动状态**
 ```
@@ -139,7 +139,7 @@ docker logs some-mysql
 **测试连接**
 ```
 # 登录
-mysql -uroot -pmy-secret-pw
+mysql -uroot -p123456
 # 切换数据库
 use mysql;
 # 显示表
@@ -263,8 +263,19 @@ docker rm $(docker ps -a | grep "redis" | awk '{print $1}')
 
 ## RabbitMQ
 
+### 拉取RabbitMQ镜像
+```
+docker pull rabbitmq (镜像未配有控制台)
+docker pull rabbitmq:management (镜像配有控制台)
+```
 
+### 启动服务
+```
+docker run --name rabbitmq -d -p 15672:15672 -p 5672:5672 rabbitmq:management
+```
 
+查看控制台：`http://10.10.10.103:15672/`
+RabbitMQ默认的用户名：`guest`，密码：`guest`
 
 ## 参考
 [树莓派安装使用docker](https://www.cnblogs.com/kasnti/p/11833778.html)
