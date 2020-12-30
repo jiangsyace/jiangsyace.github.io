@@ -102,5 +102,10 @@ Settings -> Editor -> General -> Editor tabs -> show tabs in single row
 ## 显示实时内存
 View -> Appearance -> Status Bar Widgets -> Memory Indicator
 
+## 自动换行显示
+这个操作只会对单个文件生效，不会全局生效
+
+View -> Active Editor -> Use Soft Wraps
+
 
 
