@@ -1,0 +1,205 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,IE=10,IE=9,IE=8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+<link href="/favicon.png" rel="icon" type="image/png" />
+<META name="Keywords" CONTENT="常用文件列表"><title>常用文件列表</title>
+    
+<!-- <link rel="stylesheet" type="text/css" href="semantic/dist/semantic.min.css"> -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
+<script
+  src="https://code.jquery.com/jquery-3.1.1.min.js"
+  integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+  crossorigin="anonymous"></script>
+<!-- <script src="semantic/dist/semantic.min.js"></script> -->
+<script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
+
+<style type="text/css">
+
+html, html * {
+    color: #c9d1d9;
+    background-color: #222222;
+    font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji;
+    font-size: 16px;
+    line-height: 1.5;
+    word-wrap: break-word;
+}
+* {
+    border-color: #555555;
+}
+#inner {
+    width: 100%;
+    height: 100%;
+    display: table;
+    text-align:left;
+    display:table;
+}
+
+#footer {
+    bottom: 5px;
+    position: fixed;
+    color: #999;
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 11px;
+}
+
+table,table tr th, table tr td {border:1px solid #ccc;}
+
+table{border-collapse: collapse;}  
+
+.anchor.active {
+    color: red;
+}
+</style>
+</head>
+<body>
+    <div class="ui two column divided grid stackable">
+        <div class="eight wide column ">
+            <div id="header">
+                
+            </div>
+            <div id="inner">
+            
+            </div>
+        </div>
+        <div class="four wide column ">
+            <div>
+                <p>蓝奏云：<a href="https://wwr.lanzoui.com/b02c4n2fe">https://wwr.lanzoui.com/b02c4n2fe</a><br/>密码：1111</p>
+                <img src="https://raw.githubusercontent.com/jiangsyace/pic/main/img/20210616163425.png">
+            </div>
+        </div>
+        <div class="four wide column ">
+            <p>百度云：<a href="https://pan.baidu.com/s/1RnrP-0-aw3Xo90bJkBmWxw">https://pan.baidu.com/s/1RnrP-0-aw3Xo90bJkBmWxw</a><br/>密码：1111</p>
+            <img src="https://raw.githubusercontent.com/jiangsyace/pic/main/img/20210616163441.png">
+        </div>
+    </div>
+	
+	<div id="footer" class="ui container">
+		Made by <a href="http://bins.top/blog">Jiangsy</a> <a href="http://bins.top/blog">blog</a>
+	</div>
+    <script>
+        // document.write('<script type="text/javascript" src="index.js?v='+Date.now()+'"><\/script>');
+    </script>
+    
+    <script src='https://cdn.bootcdn.net/ajax/libs/sql.js/1.5.0/sql-wasm-debug.js'></script>
+    
+    <script>
+          config = {
+            locateFile: (filename, prefix) => {
+            console.log(`prefix is : ${prefix}`);
+            return `./${filename}`;
+            }
+        }
+        
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', 'repository.db', true);
+        xhr.responseType = 'arraybuffer';
+
+        xhr.onload = e => {
+            var uInt8Array = new Uint8Array(xhr.response);
+            // The `initSqlJs` function is globally provided by all of the main dist files if loaded in the browser.
+            // We must specify this locateFile function if we are loading a wasm file from anywhere other than the current html page's folder.
+            initSqlJs(config).then(function (SQL) {
+                //Create the database
+                var db = new SQL.Database(uInt8Array);
+                // Run a query without reading the results
+                // db.run("CREATE TABLE test (col1, col2);");
+                // Insert two rows: (1,111) and (2,222)
+                // db.run("INSERT INTO test VALUES (?,?), (?,?)", [1, 111, 2, 222]);
+
+                // var contents = db.exec("SELECT * FROM my_table");
+
+                var data = [];
+                // Prepare a statement
+                var typeData = db.exec("SELECT * FROM type");
+                // typeData is now [{columns:['col1','col2',...], values:[[first row], [second row], ...]}]
+                // console.log(JSON.stringify(typeData));
+                for (var i = 0; i < typeData[0].values.length; i ++) {
+                    data.push({"name" : typeData[0].values[i][1], "id" : typeData[0].values[i][0], "data" : []});
+                }
+                
+                var stmt = db.prepare("select s.id,s.tid,s.name,s.desc,s.link,s.source from software s where s.status = $status order by s.sort");
+                stmt.getAsObject({ $status: 1 }); 
+
+                // Bind new values
+                stmt.bind({ $status: 1});
+                while (stmt.step()) { //
+                    var row = stmt.getAsObject();
+                    // console.log('Here is a row: ' + JSON.stringify(row));
+                    for (var j = 0; j < data.length; j++) {
+                        if (row.tid == data[j].id) {
+                            data[j].data.push(row)
+                        }
+                    }
+                    
+                }
+                // console.info(data);
+                createTable(data);
+                $(".anchor").eq(0).trigger('mouseenter');
+            });
+        };
+        xhr.send();
+
+        var createTable = function(data){
+            for (var i = 0; i < data.length; i ++) {
+                var item = data[i];
+                var headerHtml = '<span><a class="anchor" data="content'+i+'" href="javascript:;">'+item.name+'</a></span>';
+                if (i < data.length - 1) {
+                    headerHtml += ' | ';
+                }
+                console.info(headerHtml);
+                $('#header').append(headerHtml);
+                var tableHtml = '<div class="content content'+i+'" style="display: none;">';
+                tableHtml += '<table><tr><th>文件名</th><th>文件大小</th><th>说明</th><th>来源</th></tr>';
+                for (var j = 0; j < item.data.length; j ++) {
+                    tableHtml += '<tr><td><a href="'+item.data[j].path+'">'+item.data[j].name+'</a></td><td>0KB</td>'
+                    +'<td>'+item.data[j].desc+'</td><td><a href="'+item.data[j].source+'">来源<a></td></tr>';
+                } 
+                tableHtml += '</table></div>';
+                // console.info(tableHtml);
+                $('#inner').append(tableHtml);
+            }
+        }
+    </script>
+
+    <script>
+        
+        $(function(){
+            $(document).on('mouseover' ,'.anchor', function() {
+                $(".anchor").removeClass("active");
+                $(this).addClass("active");
+
+                $('.content').css("display", "none");
+                var data = $(this).attr("data");
+                $('.' + data).css("display", "block");
+            });
+            // $.getJSON('data.json?'+Date.now(), function(result){
+            //     console.info(result);
+            //     for (var i = 0; i < result.data.length; i ++) {
+            //         var item = result.data[i];
+            //         var headerHtml = '<span><a class="anchor" data="content'+i+'" href="javascript:;">'+item.title+'</a></span>';
+            //         if (i < result.data.length - 1) {
+            //             headerHtml += ' | ';
+            //         }
+            //         console.info(headerHtml);
+            //         $('#header').append(headerHtml);
+            //         var tableHtml = '<div class="content content'+i+'" style="display: none;">';
+            //         tableHtml += '<table><tr><th>文件名</th><th>文件大小</th><th>说明</th><th>来源</th></tr>';
+            //         for (var j = 0; j < item.list.length; j ++) {
+            //             tableHtml += '<tr><td><a href="'+item.list[j].path+'">'+item.list[j].name+'</a></td><td>'+item.list[j].size+'</td>'
+            //             +'<td>'+item.list[j].desc+'</td><td><a href="'+item.list[j].source.url+'">'+item.list[j].source.title+'<a></td></tr>';
+            //         } 
+            //         tableHtml += '</table></div>';
+            //         console.info(tableHtml);
+            //         $('#inner').append(tableHtml);
+            //     }
+            //     $(".anchor").eq(0).trigger('mouseenter');
+            // });
+        });
+    </script>
+</body>
+</html>
