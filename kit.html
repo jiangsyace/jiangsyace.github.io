@@ -37,6 +37,7 @@ html, html * {
     display: table;
     text-align:left;
     display:table;
+    min-width: 650px;
 }
 
 #footer {
@@ -151,13 +152,12 @@ table{border-collapse: collapse;}
                 if (i < data.length - 1) {
                     headerHtml += ' | ';
                 }
-                console.info(headerHtml);
                 $('#header').append(headerHtml);
                 var tableHtml = '<div class="content content'+i+'" style="display: none;">';
-                tableHtml += '<table><tr><th>文件名</th><th>文件大小</th><th>说明</th><th>来源</th></tr>';
+                tableHtml += '<table><tr><th>文件名</th><th>说明</th><th>来源</th><th>下载</th></tr>';
                 for (var j = 0; j < item.data.length; j ++) {
-                    tableHtml += '<tr><td><a href="'+item.data[j].path+'">'+item.data[j].name+'</a></td><td>0KB</td>'
-                    +'<td>'+item.data[j].desc+'</td><td><a href="'+item.data[j].source+'">来源<a></td></tr>';
+                    tableHtml += '<tr><td><a href="'+item.data[j].path+'">'+item.data[j].name+'</a></td>'
+                    +'<td>'+item.data[j].desc+'</td><td><a href="'+item.data[j].source+'" target="_blank">来源</a></td><td><a href="'+item.data[j].link+'" target="_blank">下载</a></td></tr>';
                 } 
                 tableHtml += '</table></div>';
                 // console.info(tableHtml);
