@@ -156,7 +156,7 @@ table{border-collapse: collapse;}
                 var tableHtml = '<div class="content content'+i+'" style="display: none;">';
                 tableHtml += '<table><tr><th>文件名</th><th>说明</th><th>来源</th><th>下载</th></tr>';
                 for (var j = 0; j < item.data.length; j ++) {
-                    tableHtml += '<tr><td><a href="'+item.data[j].path+'">'+item.data[j].name+'</a></td>'
+                    tableHtml += '<tr><td><a href="'+item.data[j].source+'">'+item.data[j].name+'</a></td>'
                     +'<td>'+item.data[j].desc+'</td><td><a href="'+item.data[j].source+'" target="_blank">来源</a></td><td><a href="'+item.data[j].link+'" target="_blank">下载</a></td></tr>';
                 } 
                 tableHtml += '</table></div>';
